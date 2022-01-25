@@ -3,7 +3,7 @@ package com.demo3;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class DBConnection {
+public class DBconnection {
     public static Connection createConnection()
     {
         Connection con = null;
