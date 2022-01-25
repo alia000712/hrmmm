@@ -1,7 +1,4 @@
-package com.demo3.dao;
-
-import com.demo3.bean.AddBranch;
-import com.demo3.util.DBConnection;
+package com.demo3;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
