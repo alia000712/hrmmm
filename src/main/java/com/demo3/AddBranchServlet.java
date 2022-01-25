@@ -36,8 +36,8 @@ public class AddBranchServlet extends HttpServlet {
 
         if(branchRegistered.equals("SUCCESS"))   //On success, you can display a message to user on Home page
         {
-//            request.getRequestDispatcher("/Admin/Branch/ViewBranch.jsp").forward(request, response);
-            response.sendRedirect("Admin/Branch/ViewBranch.jsp");
+            request.getRequestDispatcher("/Admin/Branch/ViewBranch.jsp").forward(request, response);
+//            response.sendRedirect("/ViewBranch.jsp");
         }
         else   //On Failure, display a meaningful message to the User.
         {

@@ -6,6 +6,11 @@ import java.sql.SQLException;
 
 public class AddBranchDao
 {
+    public AddBranchDao()
+    {
+
+    }
+
     public String registerBranch(AddBranch addbr)
     {
         String branchName = addbr.getBranchName();

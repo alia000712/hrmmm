@@ -17,7 +17,7 @@
 <body>
 <%@include file="../../menuHtml/menuAdminBranch.html"%>
 <br>
-<form action="../AddBranchServlet" method="post">
+<form action="../../AddBranchServlet" method="post">
     <div class="register">
         <center>
             <br>
