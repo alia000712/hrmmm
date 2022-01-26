@@ -1,4 +1,7 @@
-package com.demo3;
+package com.demo3.dao;
+
+import com.demo3.util.DBconnection;
+import com.demo3.bean.branch;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,12 +9,7 @@ import java.sql.SQLException;
 
 public class AddBranchDao
 {
-
-
-    public AddBranchDao()
-    {
-
-    }
+    public AddBranchDao() {}
 
     public String registerBranch(branch addbr)
     {

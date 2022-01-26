@@ -1,4 +1,4 @@
-package com.demo3;
+package com.demo3.bean;
 
 public class branch
 {
@@ -13,7 +13,6 @@ public class branch
     {
 
     }
-
     public branch(String branchName, String branchID, String branchAddress, String branchPhone, int numOfWorker) {
         this.branchName = branchName;
         this.branchID = branchID;

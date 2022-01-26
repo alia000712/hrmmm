@@ -1,4 +1,7 @@
-package com.demo3;
+package com.demo3.controller;
+
+import com.demo3.bean.branch;
+import com.demo3.dao.AddBranchDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
