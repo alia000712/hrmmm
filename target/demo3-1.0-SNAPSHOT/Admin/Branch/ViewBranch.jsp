@@ -31,8 +31,6 @@
     ResultSet resultSet = null;
 %>
 
-
-
 <html>
 <head>
     <link href='https://fonts.googleapis.com/css?family=ABeeZee' rel='stylesheet'>

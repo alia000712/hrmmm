@@ -2,17 +2,11 @@ package com.demo3.bean;
 
 public class branch
 {
-
-    public String branchName;
-    public String branchID;
-    public String branchAddress;
-    public String branchPhone;
-    public int numOfWorker;
-
     public branch()
     {
 
     }
+
     public branch(String branchName, String branchID, String branchAddress, String branchPhone, int numOfWorker) {
         this.branchName = branchName;
         this.branchID = branchID;
@@ -20,6 +14,12 @@ public class branch
         this.branchPhone = branchPhone;
         this.numOfWorker = numOfWorker;
     }
+
+    public String branchName;
+    public String branchID;
+    public String branchAddress;
+    public String branchPhone;
+    public int numOfWorker;
 
     public void setBranchName(String branchName) {this.branchName = branchName;}
     public void setBranchID(String branchID) {this.branchID = branchID;}

@@ -45,7 +45,7 @@ public class AddBranchServlet extends HttpServlet {
         else   //On Failure, display a meaningful message to the User.
         {
             request.setAttribute("errMessage", branchRegistered);
-            request.getRequestDispatcher("Admin/Branch/AddBranch.jsp").forward(request, response);
+            request.getRequestDispatcher("Admin/Branch/branch.jsp").forward(request, response);
         }
     }
 }
