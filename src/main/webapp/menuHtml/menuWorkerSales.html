@@ -1,13 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-    <title>Branch</title>
+    <title>Sales</title>
     <style>
-        body
-        {
+        body{
             margin: 0;
-            background: linear-gradient(270deg, #DD88C8 0%, #87BBD9 100%);
+            background: linear-gradient(270deg, #82D3B4 0%, #B46CC6 100%);
         }
-
         ul {
             list-style-type: none;
             margin: 0;
@@ -17,42 +18,36 @@
             position: fixed;
             height: 100%;
             font-family: "Inter", sans-serif;
-
         }
-
         li
         {
-            color: #00FFFF;
+            color: #9EE5D5;
         }
-
         li a
         {
             display: block;
-            color: #00FFFF;
+            color: #9EE5D5;
             padding: 18px 20px;
             text-decoration: none;
         }
-
         li a.active
         {
-            background-color: #3d798f;
-            color: #82C4F3;
+            background-color: #2B9174;
+            color: #9EE5D5;
             overflow: visible;
         }
-
         li a:hover:not(.active)
         {
-            background-color:#3d798f;
-            color: #82C4F3;
+            background-color:#2B9174;
+            color: #9EE5D5;
             letter-spacing: 0px;
             line-height: 1.2;
         }
-
         .rectangle2
         {
             height: 5px;
             width: 100px;
-            background-color: #00FFFF;
+            background-color: #9EE5D5;
         }
     </style>
 </head>
@@ -60,17 +55,15 @@
 <ul>
     <center>
         <br><br>
-        <li><i class='fas fa-user-circle' style='font-size:48px;color:#00FFFF'></i></li><br>
-        <li>HI ADMIN</li><br>
+        <li><i class='fas fa-user-circle' style='font-size:48px;color:#9EE5D5'></i></li><br>
+        <li>HI WORKER</li><br>
         <li><div class="rectangle2"></div><br></li>
-        <li><a href="../Home/adminHome.jsp">HOME</a></li>
-        <li><a href="../Profile/adminViewProfile.jsp">PROFILE</a></li>
-        <li><a href="../Worker/adminWorker.jsp">WORKER</a></li>
-        <li><a href="../Cust/adminViewCust.jsp">CUSTOMER</a></li>
-        <li><a href="../Sales/adminSales.jsp">SALES</a></li>
-        <li><a class="active" href="../Branch/adminBranch.jsp">BRANCH</a></li>
-        <li><a href="../Package/adminPackage.jsp">PACKAGE</a></li>
+        <li><a href="../Home/workerHome.jsp">HOME</a></li>
+        <li><a href="../Profile/workerViewProfile.jsp">PROFILE</a></li>
+        <li><a href="../Booking/workerViewBooking.jsp">BOOKING</a></li>
+        <li><a class="active" href="../Sales/workerSales.jsp">SALES</a></li>
         <li><a href="../../index.jsp">LOGOUT</a></li>
     </center>
 </ul>
 </body>
+</html>
