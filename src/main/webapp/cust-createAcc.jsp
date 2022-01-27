@@ -17,27 +17,29 @@
         <div class="form-container sign-up-container">
 
             <%--form register--%>
-            <form action="custRegServlet" method="post">
+            <form action="" method="post">
                 <img src="image/logo.png" style="width: 30%;">
                 <h1 style="font-size: 16px"> Customer: Register</h1>
-                <input type="text" placeholder="Name" required/>
-                <input type="text" placeholder="Username" required/>
-                <input type="email" placeholder="Email" required/>
-                <input type="password" placeholder="Password" required/>
-                <input type="number" placeholder="Phone" required/>
-                <input type="text" placeholder="Address" required/>
-                <button type="submit">REGISTER</button>
+                <input type="text" name="custname" placeholder="Name" required/>
+                <input type="text" name="custusername" placeholder="Username" required/>
+                <input type="email" name="custemail" placeholder="Email" required/>
+                <input type="password" name="custpass" placeholder="Password" required/>
+                <input type="number" name="custphone" placeholder="Phone" required/>
+                <input type="text" name="custaddress" placeholder="Address" required/>
+                <input type="hidden" name="action" value="register">
+                <button type="submit" name="submit" onclick="form.action='StudentServlet'">REGISTER</button>
             </form>
         </div>
 
         <%--form login--%>
         <div class="form-container sign-in-container">
-            <form action="#">
+            <form action="" method="post">
                 <img src="image/logo.png" style="width: 30%;">
                 <h1>Customer: Login</h1>
-                <input type="text" placeholder="Username" required/>
-                <input type="password" placeholder="Password" required/> <br>
-                <button type="button" id="login">LOGIN</button><br>
+                <input type="text" name="custusername" placeholder="Username" required/>
+                <input type="password" name="custpass" placeholder="Password" required/> <br>
+                <input type="hidden" name="action" value="login">
+                <button type="submit" name="submit" onclick="form.action='StudentServlet'">LOGIN</button><br>
                 <button type="button" id="cancel">CANCEL</button><br>
             </form>
         </div>
