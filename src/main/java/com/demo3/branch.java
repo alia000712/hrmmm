@@ -1,6 +1,8 @@
 package com.demo3;
 
-public class branch
+import java.io.Serializable;
+
+public class branch implements Serializable
 {
 
     public String branchName;
@@ -9,10 +11,7 @@ public class branch
     public String branchPhone;
     public int numOfWorker;
 
-    public branch()
-    {
-
-    }
+    public branch() {}
 
     public branch(String branchName, String branchID, String branchAddress, String branchPhone, int numOfWorker) {
         this.branchName = branchName;
@@ -33,4 +32,15 @@ public class branch
     public String getBranchAddress() {return branchAddress;}
     public String getBranchPhone() {return branchPhone;}
     public int getNumOfWorker() {return numOfWorker;}
+
+    public String printBranch()
+    {
+        return "branch{" +
+                "branchName='" + branchName + '\'' +
+                ", branchID='" + branchID + '\'' +
+                ", branchAddress='" + branchAddress + '\'' +
+                ", branchPhone='" + branchPhone + '\'' +
+                ", numOfWorker=" + numOfWorker +
+                '}';
+    }
 }
