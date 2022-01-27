@@ -1,0 +1,76 @@
+<head>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <title>Sales</title>
+    <style>
+        body
+        {
+            margin: 0;
+            background: linear-gradient(270deg, #DD88C8 0%, #87BBD9 100%);
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 20%;
+            background-color:black;
+            position: fixed;
+            height: 100%;
+            font-family: "Inter", sans-serif;
+
+        }
+
+        li
+        {
+            color: #00FFFF;
+        }
+
+        li a
+        {
+            display: block;
+            color: #00FFFF;
+            padding: 18px 20px;
+            text-decoration: none;
+        }
+
+        li a.active
+        {
+            background-color: #3d798f;
+            color: #82C4F3;
+            overflow: visible;
+        }
+
+        li a:hover:not(.active)
+        {
+            background-color:#3d798f;
+            color: #82C4F3;
+            letter-spacing: 0px;
+            line-height: 1.2;
+        }
+
+        .rectangle2
+        {
+            height: 5px;
+            width: 100px;
+            background-color: #00FFFF;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <center>
+        <br><br>
+        <li><i class='fas fa-user-circle' style='font-size:48px;color:#00FFFF'></i></li><br>
+        <li>HI ADMIN</li><br>
+        <li><div class="rectangle2"></div><br></li>
+        <li><a href="../Home/adminHome.jsp">HOME</a></li>
+        <li><a href="../Profile/adminViewProfile.jsp">PROFILE</a></li>
+        <li><a href="../Worker/adminWorker.jsp">WORKER</a></li>
+        <li><a href="../Cust/adminViewCust.jsp">CUSTOMER</a></li>
+        <li><a class="active" href="../Sales/adminSales.jsp">SALES</a></li>
+        <li><a href="../Branch/adminBranch.jsp">BRANCH</a></li>
+        <li><a href="../Package/adminPackage.jsp">PACKAGE</a></li>
+        <li><a href="../../index.jsp">LOGOUT</a></li>
+    </center>
+</ul>
+</body>
