@@ -167,7 +167,7 @@ public class CustomerServlet extends HttpServlet
 
         session.removeAttribute("cust");
         session.setAttribute("cust", cust);
-        response.sendRedirect("Customer/Profile/custViewProfile.jsp");
+        response.sendRedirect("custViewProfile.jsp");
     }
 
     /*######################################################( DELETE )#############################################################*/
