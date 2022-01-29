@@ -143,15 +143,15 @@ public class CustomerServlet extends HttpServlet
 
     /*######################################################( UPDATE )#############################################################*/
 
-    private void updateUser(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, IOException {
+    private void updateUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException
+    {
         HttpSession session = request.getSession();
         int custid = Integer.parseInt(request.getParameter("custid"));
         String custname = request.getParameter("custname");
         String custphone = request.getParameter("custphone");
         String custemail = request.getParameter("custemail");
-//        String custpass = request.getParameter("custpass");
-//        String custusername = request.getParameter("custusername");
+        String custpass = request.getParameter("custpass");
+        String custusername = request.getParameter("custusername");
         String custaddress = request.getParameter("custaddress");
         customer cust = new customer();
 
@@ -159,8 +159,8 @@ public class CustomerServlet extends HttpServlet
         cust.setCustName(custname);
         cust.setCustPhone(custphone);
         cust.setCustEmail(custemail);
-//        cust.setCustPass(custpass);
-//        cust.setCustUsername(custusername);
+        cust.setCustPass(custpass);
+        cust.setCustUsername(custusername);
         cust.setCustAddress(custaddress);
 
         cd.updateUser(cust);

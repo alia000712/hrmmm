@@ -37,23 +37,26 @@
 <div class="container">
     <div class="form-container">
         <form action="" method="post">
-            <h2>PROFILE DETAILS</h2>
-            <input type="number" name="custid" value="${custID}" hidden>
-            <hr><br/><br/>
-            <p>USER ID :</p>
-            <input type="number" readonly value="${cust.custID}">
-            <p>NAME :</p>
-            <input type="text" placeholder="Name" name="custname" value="${cust.custName}">
-            <p>E-MAIL :</p>
-            <input type="email" placeholder="E-mail" name="custemail" value="${cust.custEmail}">
-            <p>PHONE :</p>
-            <input type="text" placeholder="Phone" name="custphone" value="${cust.custPhone}">
-            <p>E-MAIL :</p>
-            <input type="text" placeholder="Address" name="custaddress" value="${cust.custAddress}"><br/><br/><br/>
-            <input type="hidden" name="action" value="update">
-            <button type="submit" name="submit" onclick="form.action='CustomerServlet'">Update</button>
-            <button class="btn-cancel"><a href="custViewProfile.jsp">CANCEL</a></button>
-<%--            class="btn-edit"--%>
+                <h2>PROFILE DETAILS</h2>
+                <input type="hidden" name="custid" value="${cust.custID}">
+                <hr><br/><br/>
+                <p>USER ID :</p>
+                <input type="number" name="custid" readonly value="${cust.custID}">
+                <p>NAME :</p>
+                <input type="text" placeholder="Name" name="custname" value="${cust.custName}">
+                <p>E-MAIL :</p>
+                <input type="text" placeholder="E-mail" name="custemail" value="${cust.custEmail}">
+                <p>PHONE :</p>
+                <input type="text" placeholder="Phone" name="custphone" value="${cust.custPhone}">
+                <p>ADDRESS :</p>
+                <input type="text" placeholder="Address" name="custaddress" value="${cust.custAddress}">
+                <p>PASSWORD :</p>
+                <input type="text" placeholder="pass" name="custpass" value="${cust.custPass}">
+                <p>USERNAME :</p>
+                <input type="text" placeholder="username" name="custusername" value="${cust.custUsername}"><br/><br/><br/>
+                <input type="hidden" name="action" value="update">
+                <button type="submit" class="btn-edit" name="submit" onclick="form.action='../../CustomerServlet'" >Update</button>
+                <button class="btn-cancel"><a href="custViewProfile.jsp">CANCEL</a></button>
         </form>
     </div>
 </div>
