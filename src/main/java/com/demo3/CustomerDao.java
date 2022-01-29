@@ -46,16 +46,19 @@ public class CustomerDao
     {
         boolean rowUpdated;
         try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement("UPDATE student set custName=?,custPhone=?,custEmail=?,custPass=?,custUsername=?,custAddress=? where custID=?");)
+             PreparedStatement statement = connection.prepareStatement("UPDATE customer set custName=?,custPhone=?,custEmail=?,custAddress=? where custID=?");)
         {
             statement.setString(1, cust.getCustName());
             statement.setString(2, cust.getCustPhone());
             statement.setString(3, cust.getCustEmail());
-            statement.setString(4, cust.getCustPass());
-            statement.setString(5, cust.getCustUsername());
-            statement.setString(6, cust.getCustAddress());
+//            statement.setString(4, cust.getCustPass());
+//            statement.setString(5, cust.getCustUsername());
+            statement.setString(4, cust.getCustAddress());
+            statement.setInt(5, cust.getCustID());
 
             rowUpdated = statement.executeUpdate() > 0;
+
+//            custPass=?,custUsername=?
         }
         return rowUpdated;
     }

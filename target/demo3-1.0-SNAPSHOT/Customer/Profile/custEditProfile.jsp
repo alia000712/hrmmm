@@ -38,7 +38,7 @@
     <div class="form-container">
         <form action="" method="post">
             <h2>PROFILE DETAILS</h2>
-            <input type="hidden" name="custid" value="${custID}">
+            <input type="number" name="custid" value="${custID}" hidden>
             <hr><br/><br/>
             <p>USER ID :</p>
             <input type="number" readonly value="${cust.custID}">
@@ -51,8 +51,9 @@
             <p>E-MAIL :</p>
             <input type="text" placeholder="Address" name="custaddress" value="${cust.custAddress}"><br/><br/><br/>
             <input type="hidden" name="action" value="update">
-            <button type="submit" class="btn-edit" name="submit" onclick="form.action='CustomerServlet'" >Update<i class="fas fa-edit"></i></button>
+            <button type="submit" name="submit" onclick="form.action='CustomerServlet'">Update</button>
             <button class="btn-cancel"><a href="custViewProfile.jsp">CANCEL</a></button>
+<%--            class="btn-edit"--%>
         </form>
     </div>
 </div>
