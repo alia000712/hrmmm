@@ -12,6 +12,44 @@
     <link rel="icon" href="../../image/logo.png">
     <link rel="stylesheet" href="custViewProfile.css">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <style>
+        .edit-profile
+        {
+            margin: 0;
+            position: absolute;
+            top: 85%;
+            left: 60%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+        button
+        {
+            color: transparent;
+            border: 1px solid black;
+            border-radius: 30px;
+            padding: 15px;
+            padding-left: 30px;
+            padding-right: 30px;
+            justify-content: center;
+        }
+        button:hover
+        {
+            background-color: #695466;
+            cursor: pointer;
+        }
+        button a
+        {
+            text-decoration: none;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 15px;
+            color: black;
+        }
+        button a:hover
+        {
+            color: #D8A8FA;
+        }
+    </style>
 </head>
 <body>
 <%@include file="../../menuHtml/menuCustProfile.html"%>
@@ -20,37 +58,31 @@
     <h2>Profile Details</h2>
     <hr>
     <form action="" method="post">
-        <input type="number" name="custid" value="${custid}" hidden>
+        <input type="number" name="custid" value="${custID}" hidden>
         <table class="table">
             <tr>
                 <td>USER ID</td>
-                <td><input type="text" readonly >${cust.custid}</td>
+                <td><input type="number" readonly value="${cust.custID}"></input></td>
             </tr>
             <tr>
                 <td>NAME</td>
-                <td><input type="text" readonly>${cust.custname}</td>
+                <td><input type="text" readonly value="${cust.custName}"></td>
             </tr>
             <tr>
                 <td>E-MAIL</td>
-                <td><input type="text" readonly>${cust.custemail}</td>
+                <td><input type="text" readonly value="${cust.custEmail}"></td>
             </tr>
             <tr>
                 <td>PHONE</td>
-                <td><input type="text" readonly>${cust.custphone}</td>
+                <td><input type="text" readonly value="${cust.custPhone}"></td>
             </tr>
             <tr>
                 <td>ADDRESS</td>
-                <td><input type="text" readonly>${cust.custaddress}</td>
+                <td><input type="text" readonly value="${cust.custAddress}"></td>
             </tr>
         </table>
 
-        <div class="edit-profile">
-            <button type="submit"><a href="custEditProfile.jsp">EDIT<i class="fas fa-edit"></i></a></button>
-        </div>
-
-        <input type="hidden" name="action" value="delete">
-        <button type="submit" class="button button1" name="submit"><a href="Student-updateprofile.jsp">Update</a></button>
-        <button type="submit" class="button button1" name="submit" onclick="form.action='StudentServlet'">Delete</button><br><br>
+        <button type="submit" name="submit" class="edit-profile"><a href="custEditProfile.jsp">EDIT<i class="fas fa-edit"></i></a></button>
     </form>
 </div>
 </body>

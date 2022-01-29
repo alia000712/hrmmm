@@ -46,7 +46,7 @@
                         <input type="password" name="custpass" placeholder="Password" required/> <br>
                         <input type="hidden" name="action" value="login">
                     </div>
-                    <button type="submit" name="submit" onclick="form.action='CustomerServlet'">LOGIN</button><br>
+                    <button type="submit" name="submit" onclick="form.action='CustomerServlet'">LOGIN</button><br><br>
                     <button type="button" id="cancel">CANCEL</button><br>
                 </div>
             </form>

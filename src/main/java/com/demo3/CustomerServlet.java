@@ -91,9 +91,9 @@ public class CustomerServlet extends HttpServlet
         try
         {
             Class.forName("org.postgresql.Driver"); // ni stay
-            String dbURL = "jdbc:postgresql://ec2-3-216-113-109.compute-1.amazonaws.com:5432/d2588ossjegiv9"; //ni url dri heroku database
-            String user = "d2588ossjegiv9"; //ni user dri heroku database
-            String pass = "ff8e836fb7a630d275b8e9109cb04b91a5fd0937b959cfa509cc007809d6d1b7"; //ni password dri heroku database
+            String dbURL = "jdbc:postgresql://ec2-50-19-32-96.compute-1.amazonaws.com:5432/d65mb698aandvt"; //ni url dri heroku database
+            String user = "ffkacpfvbcmcwa"; //ni user dri heroku database
+            String pass = "3939ef811721250f3db1595eb911cfcbac4e294a582158f13f9ef08dc63786bf"; //ni password dri heroku database
             Connection conn = DriverManager.getConnection(dbURL, user, pass);
 
             String sql  ="SELECT * from customer";
@@ -117,6 +117,7 @@ public class CustomerServlet extends HttpServlet
                         session.setAttribute("custid",res.getString(1));
                         customer cust = new customer();
 
+                        cust.setCustID(res.getInt(1));
                         cust.setCustName(res.getString(2));
                         cust.setCustPhone(res.getString(3));
                         cust.setCustEmail(res.getString(4));
@@ -149,8 +150,8 @@ public class CustomerServlet extends HttpServlet
         String custname = request.getParameter("custname");
         String custphone = request.getParameter("custphone");
         String custemail = request.getParameter("custemail");
-        String custpass = request.getParameter("custpass");
-        String custusername = request.getParameter("custusername");
+//        String custpass = request.getParameter("custpass");
+//        String custusername = request.getParameter("custusername");
         String custaddress = request.getParameter("custaddress");
         customer cust = new customer();
 
@@ -158,8 +159,8 @@ public class CustomerServlet extends HttpServlet
         cust.setCustName(custname);
         cust.setCustPhone(custphone);
         cust.setCustEmail(custemail);
-        cust.setCustPass(custpass);
-        cust.setCustUsername(custusername);
+//        cust.setCustPass(custpass);
+//        cust.setCustUsername(custusername);
         cust.setCustAddress(custaddress);
 
         cd.updateUser(cust);
