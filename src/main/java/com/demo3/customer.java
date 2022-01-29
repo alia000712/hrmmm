@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class customer implements Serializable
 {
-    public String custID;
+    public int custID;
     public String custName;
     public String custAddress;
     public String custPhone;
@@ -14,7 +14,7 @@ public class customer implements Serializable
 
     public customer(){}
 
-    public customer(String custID, String custName, String custAddress, String custPhone, String custEmail, String custPass, String custUsername)
+    public customer(int custID, String custName, String custAddress, String custPhone, String custEmail, String custPass, String custUsername)
     {
         this.custID = custID;
         this.custName = custName;
@@ -25,7 +25,7 @@ public class customer implements Serializable
         this.custUsername = custUsername;
     }
 
-    public String getCustID() {return custID;}
+    public int getCustID() {return custID;}
     public String getCustName() {return custName;}
     public String getCustAddress() {return custAddress;}
     public String getCustPhone() {return custPhone;}
@@ -33,7 +33,7 @@ public class customer implements Serializable
     public String getCustPass() {return custPass;}
     public String getCustUsername() {return custUsername;}
 
-    public void setCustID(String custID) {this.custID = custID;}
+    public void setCustID(int custID) {this.custID = custID;}
     public void setCustName(String custName) {this.custName = custName;}
     public void setCustAddress(String custAddress) {this.custAddress = custAddress;}
     public void setCustPhone(String custPhone) {this.custPhone = custPhone;}
