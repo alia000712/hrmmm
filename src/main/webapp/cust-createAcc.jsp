@@ -47,7 +47,7 @@
                         <input type="hidden" name="action" value="login">
                     </div>
                     <button type="submit" name="submit" onclick="form.action='CustomerServlet'">LOGIN</button><br><br>
-                    <button type="button" id="cancel">CANCEL</button><br>
+                    <button type="button" id="cancel"><a href="index.jsp" style="color: white">CANCEL</a> </button><br>
                 </div>
             </form>
         </div>

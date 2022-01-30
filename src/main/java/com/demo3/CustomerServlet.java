@@ -128,7 +128,6 @@ public class CustomerServlet extends HttpServlet
                         session.setAttribute("cust", cust);
                         response.sendRedirect("Customer/Home/custHome.jsp");
                     }
-
                     else
                     {
                         out.println("User not exist");
@@ -176,6 +175,6 @@ public class CustomerServlet extends HttpServlet
     {
         int custid = Integer.parseInt(request.getParameter("custid"));
         cd.deleteUser(custid);
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("Admin/Cust/adminViewCust.jsp");
     }
 }
