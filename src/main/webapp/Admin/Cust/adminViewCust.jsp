@@ -13,8 +13,6 @@
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="adminViewCust.css">
     <style>
         .admin-cust{
             margin-left: 20%;
@@ -46,7 +44,6 @@
         <br><br>
         <h1>MANAGE CUSTOMER</h1>
         <hr>
-        <form action="" method="post">
             <table>
                 <tr>
                     <th>ID</th>
@@ -54,7 +51,6 @@
                     <th>E-MAIL</th>
                     <th>PHONE</th>
                     <th>ADDRESS</th>
-                    <th></th>
                     <th>ACTION</th>
                 </tr>
             <%
@@ -84,24 +80,24 @@
                             {
             %>
                             <tr>
-                                <td><input name="custid" value="<%=res.getString("custID")%>"></td>
+                                <td><%=res.getString("custID")%></td>
                                 <td><%=res.getString("custName")%></td>
                                 <td><%=res.getString("custPhone")%></td>
                                 <td><%=res.getString("custEmail")%></td>
                                 <td><%=res.getString("custAddress")%></td>
-                                <td><input type="hidden" name="action" value="delete" hidden></td>
-                                <td><button type="submit" name="submit" class="btn1" onclick="form.action='../../CustomerServlet'" >Delete</button></td><td><button class="btn1"><a>DELETE</a></button></td>
+                                <form action="" method="post">
+                                    <input type="hidden" name="action" value="delete">
+                                    <input type="hidden" name="custid" value="<%=res.getString("custID")%>">
+                                    <td><button type="submit" name="submit" onclick="form.action='../../CustomerServlet'" >Delete</button></td>
+                                </form>
                             </tr>
             <%
                             }
                     }
-
-
                 }
                 catch (Exception e) {e.printStackTrace();}
             %>
                </table>
-        </form>
     </center>
 </div>
 </body>
