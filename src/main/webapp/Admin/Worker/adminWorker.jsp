@@ -50,7 +50,7 @@
     <center>
         <br><br><br>
         <h2>REGISTER WORKER</h2>
-        <button><a href=adminAddWorker.jsp.jsp">REGISTER</a></button>
+        <button><a href="adminAddWorker.jsp">REGISTER</a></button>
         <br><br><br>
         <div class="rectangle"></div><br>
         <h2>VIEW WORKER</h2>

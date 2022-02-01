@@ -1,12 +1,14 @@
 package com.demo3;
 
-import javax.servlet.http.HttpSession;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 import static java.lang.System.out;
 
-public class CustomerDao
+public class BranchDao
 {
-
     String dbURL = "jdbc:postgresql://ec2-50-19-32-96.compute-1.amazonaws.com:5432/d65mb698aandvt"; //ni url dri heroku database
     String user = "ffkacpfvbcmcwa";
     String pass = "3939ef811721250f3db1595eb911cfcbac4e294a582158f13f9ef08dc63786bf";
@@ -24,50 +26,46 @@ public class CustomerDao
         return connection;
     }
 
-    public void signup (customer cust) throws SQLException
+    public void addBranch(branch br) throws SQLException
     {
-        // try-with-resource statement will auto close the connection.
         try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("insert into customer (custname,custphone,custemail,custpass,custusername,custaddress) values(?,?,?,?,?,?)");)
+             PreparedStatement preparedStatement = connection.prepareStatement("insert into branch (branchid,branchname,branchaddress,branchphone,numofworker) values(?,?,?,?,?)");)
         {
-            preparedStatement.setString(1, cust.getCustName());
-            preparedStatement.setString(2, cust.getCustPhone());
-            preparedStatement.setString(3, cust.getCustEmail());
-            preparedStatement.setString(4, cust.getCustPass());
-            preparedStatement.setString(5, cust.getCustUsername());
-            preparedStatement.setString(6, cust.getCustAddress());
+            preparedStatement.setString(1, br.getBranchID());
+            preparedStatement.setString(2, br.getBranchName());
+            preparedStatement.setString(3, br.getBranchAddress());
+            preparedStatement.setString(4, br.getBranchPhone());
+            preparedStatement.setInt(5,br.getNumOfWorker());
             out.println(preparedStatement);
             preparedStatement.executeUpdate();
         }
         catch (SQLException e) {printSQLException(e);}
     }
 
-    public boolean updateUser(customer cust) throws SQLException
+    public boolean updateBranch(branch br) throws SQLException
     {
         boolean rowUpdated;
         try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement("UPDATE customer set custName=?,custPhone=?,custEmail=?, custPass=?,custUsername=?,custAddress=? where custID=?");)
+             PreparedStatement statement = connection.prepareStatement("UPDATE branch set branchname=?,branchaddress=?,branchphone=?, numofworker=?, where branchid=?");)
         {
-            statement.setString(1, cust.getCustName());
-            statement.setString(2, cust.getCustPhone());
-            statement.setString(3, cust.getCustEmail());
-            statement.setString(4, cust.getCustPass());
-            statement.setString(5, cust.getCustUsername());
-            statement.setString(6, cust.getCustAddress());
-            statement.setInt(7, cust.getCustID());
+            statement.setString(1, br.getBranchName());
+            statement.setString(2, br.getBranchAddress());
+            statement.setString(3, br.getBranchPhone());
+            statement.setInt(4, br.getNumOfWorker());
+            statement.setString(5, br.getBranchID());
 
             rowUpdated = statement.executeUpdate() > 0;
         }
         return rowUpdated;
     }
 
-    public boolean deleteUser(int id) throws SQLException
+    public boolean deleteBranch(String id) throws SQLException
     {
         boolean rowDeleted;
         try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement("delete from customer where custID=?");)
+             PreparedStatement statement = connection.prepareStatement("delete from branch where branchid=?");)
         {
-            statement.setInt(1, id);
+            statement.setString(1, id);
             rowDeleted = statement.executeUpdate() > 0;
         }
         return rowDeleted;
