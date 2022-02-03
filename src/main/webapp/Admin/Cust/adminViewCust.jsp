@@ -72,7 +72,6 @@
                         System.out.println("Product Name: " + dm.getDatabaseProductName());
                         System.out.println("Product version: " + dm.getDatabaseProductVersion());
 
-
                         Statement statement = conn.createStatement();
                         ResultSet res = statement.executeQuery(sql);
 
@@ -80,14 +79,14 @@
                             {
             %>
                             <tr>
-                                <td><%=res.getString("custID")%></td>
+                                <td><%=res.getInt("custID")%></td>
                                 <td><%=res.getString("custName")%></td>
                                 <td><%=res.getString("custPhone")%></td>
                                 <td><%=res.getString("custEmail")%></td>
                                 <td><%=res.getString("custAddress")%></td>
                                 <form action="" method="post">
                                     <input type="hidden" name="action" value="delete">
-                                    <input type="hidden" name="custid" value="<%=res.getString("custID")%>">
+                                    <input type="hidden" name="custid" value="<%=res.getInt("custID")%>">
                                     <td><button type="submit" name="submit" onclick="form.action='../../CustomerServlet'" >Delete</button></td>
                                 </form>
                             </tr>

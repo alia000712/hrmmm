@@ -116,6 +116,7 @@ public class BranchServlet extends HttpServlet
         br.setBranchAddress(branchaddress);
         br.setBranchPhone(branchphone);
         br.setNumOfWorker(numofworker);
+
         session.setAttribute("br",br);
         response.sendRedirect("Admin/Branch/adminViewBranchDetail.jsp");
     }
