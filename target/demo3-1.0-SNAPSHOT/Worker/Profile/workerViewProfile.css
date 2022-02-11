@@ -1,0 +1,55 @@
+.worker-profile
+{
+    margin-left: 25%;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: white;
+}
+h2
+{
+    margin-top: 0px;
+    font-size: 50px;
+}
+hr
+{
+    border: 1px solid honeydew;
+    width: 10%;
+    height: 8px;
+    background: white;
+    border-radius: 30px;
+    margin:-20px 3px ;
+}
+table
+{
+    margin: 13px -36px;
+    background: transparent;
+    border-collapse: collapse;
+    width: 40%;
+    display: block;
+    padding: 20px;
+}
+td, tr
+{
+    font-size: 20px;
+    padding: 20px;
+}
+input,textarea
+{
+    background: transparent;
+    border-collapse: collapse;
+    border-radius: 3px;
+    align-content: center;
+    text-align: left;
+    margin-bottom: 3px;
+    border: none;
+    border-bottom: 3px solid white;
+    width: 150%;
+    padding: 7px;
+    font-size: 20px;
+    color: lightgrey;
+}
+
+a
+{
+    text-decoration: none;
+}
