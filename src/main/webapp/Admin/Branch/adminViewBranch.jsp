@@ -47,7 +47,6 @@
                         System.out.println("Product Name: " + dm.getDatabaseProductName());
                         System.out.println("Product version: " + dm.getDatabaseProductVersion());
 
-
                         Statement statement = conn.createStatement();
                         ResultSet res = statement.executeQuery(sql);
 

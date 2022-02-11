@@ -62,7 +62,7 @@
         <table class="table">
             <tr>
                 <td>USER ID</td>
-                <td><input type="number" readonly value="${cust.custID}"></input></td>
+                <td><input type="number" readonly value="${cust.custID}"></td>
             </tr>
             <tr>
                 <td>NAME</td>
