@@ -78,12 +78,12 @@
             </tr>
             <tr>
                 <td>ADDRESS</td>
-                <td><input type="text" readonly value="${cust.custAddress}"></td>
+                <td><textarea cols="37" rows="4">${cust.custAddress}</textarea></td>
             </tr>
         </table>
-
         <button type="submit" name="submit" class="edit-profile"><a href="custEditProfile.jsp">EDIT<i class="fas fa-edit"></i></a></button>
     </form>
+
 </div>
 </body>
 </html>

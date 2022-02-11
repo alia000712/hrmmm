@@ -15,12 +15,13 @@
 <body>
 <div class="container" id="container">
     <div class="form-container sign-in-container">
-        <form action="#">
+        <form action="" method="post">
             <img src="image/logo.png" style="width: 30%;">
             <h1>Worker: Login</h1>
-            <input type="text" placeholder="Worker ID" required />
-            <input type="password" placeholder="Password" required /> <br>
-            <button type="button" id="login">LOGIN</button><br>
+            <input type="text" name="workeremail" placeholder="Worker ID" required />
+            <input type="password" name="workeric" placeholder="Password" required /> <br>
+            <input type="hidden" name="action" value="login">
+            <button type="submit" name="submit" onclick="form.action='WorkerServlet'">LOGIN</button><br>
             <button type="button" id="cancel">CANCEL</button><br>
         </form>
     </div>
