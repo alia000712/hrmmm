@@ -21,22 +21,23 @@
             </ul>
         </div>
 
-        <div class="welcome">
-            <h3>Welcome To...</h3>
-        </div>
+            <div class="welcome">
+                <h3>Welcome To...</h3>
+            </div>
 
-        <div class="neon-wrapper">
-            <span class="txt">N'Barbershop</span>
-        </div>
+            <div class="neon-wrapper">
+                <span class="txt">N'Barbershop</span>
+            </div>
 
-        <div class="booking-system">
-            <h3><%= "Booking System" %></h3>
-        </div><br><br>
+            <div class="booking-system">
+                <h3><%= "Booking System" %></h3>
+            </div><br><br>
 
-        <div class="content">
-            <p style="text-align: center; color: white; "> LIFE IS SHORT. <br> </p>
-            <p style="text-align: center; color: white; "> MAKE EACH HAIR FLIP FABULOUS</p>
-        </div><br>
+            <div class="content">
+                <p style="text-align: center; color: white; "> LIFE IS SHORT. <br> </p>
+                <p style="text-align: center; color: white; "> MAKE EACH HAIR FLIP FABULOUS</p>
+            </div><br><br/>
+
 
         <div>
             <button type="button" id="customer" style="width: 200px;
@@ -94,4 +95,4 @@
         }
     </script>
 </body>
-</html>
+</html>booking

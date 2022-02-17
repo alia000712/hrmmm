@@ -24,8 +24,8 @@
         }
         button
         {
-            color: transparent;
-            border: 1px solid black;
+            color: white;
+            border: none;
             border-radius: 30px;
             padding: 15px;
             padding-left: 30px;
@@ -34,7 +34,7 @@
         }
         button:hover
         {
-            background-color: #695466;
+            background-color: #D8A8FA;
             cursor: pointer;
         }
         button a
@@ -47,7 +47,7 @@
         }
         button a:hover
         {
-            color: #D8A8FA;
+            color: black;
         }
     </style>
 </head>
@@ -81,7 +81,7 @@
                 <td><textarea cols="37" rows="4">${cust.custAddress}</textarea></td>
             </tr>
         </table>
-        <button type="submit" name="submit" class="edit-profile"><a href="custEditProfile.jsp">EDIT<i class="fas fa-edit"></i></a></button>
+        <button type="submit" name="submit" class="edit-profile"><a href="custEditProfile.jsp">EDIT <i class="fas fa-edit"></i></a></button>
     </form>
 
 </div>

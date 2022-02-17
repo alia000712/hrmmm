@@ -33,6 +33,7 @@ public class BranchServlet extends HttpServlet
             {
                 case "add":
                     addBranch(request, response);
+                    break;
                 case "view":
                     viewBranch(request, response);
                     break;
@@ -71,6 +72,7 @@ public class BranchServlet extends HttpServlet
         br.setNumOfWorker(numofworker);
 
         bd.addBranch(br);
+        response.sendRedirect("Admin/Branch/adminViewBranch.jsp");
     }
 
 

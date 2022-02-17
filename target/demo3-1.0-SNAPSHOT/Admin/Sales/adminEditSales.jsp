@@ -11,10 +11,10 @@
 <html>
 <head>
     <title>Sales</title>
+    <link rel="stylesheet" href="adminEditSales.css">
 </head>
 <body>
 <%@include file="../../menuHtml/menuAdminSales.html"%>
-<link rel="stylesheet" href="adminEditSales.css">
 <br>
 <form action="" method="post">
     <div class="editsales">
@@ -24,6 +24,8 @@
             <img src="../../image/logo.png" style="width:150px; height:150px" >
             <h1>ADD SALES</h1>
             <div class="rectangle"></div><br>
+            <input type="hidden" name="adminid" value="${adm.adminID}">
+            <input type="hidden" name="workerid" value="${sl.workerID}">
             <input type="text" name="salesid" placeholder="Sales ID" value="${sl.salesID}" readonly><br><br>
             <input type="date" name="salesdate" placeholder="Sales Date" value="${sl.salesDate}"><br><br>
             <input type="text" name="salesamount" placeholder="Sales Amount" value="${sl.salesAmount}" readonly><br><br>
@@ -68,7 +70,7 @@
                     catch (Exception e) {e.printStackTrace();}
                 %>
             </select><br><br>
-            <input type="hidden" name="action" value="updatesales">
+            <input type="hidden" name="action" value="updatesalesadmin">
             <button type="submit" name="submit" onclick="form.action='../../SalesServlet'">UPDATE</button>
         </center>
     </div>

@@ -23,7 +23,7 @@
         }
         .container{
             width: 50%;
-            height: 95%;
+            height: 85%;
             background: white;
             top: 50%;
             left: 50%;
@@ -86,13 +86,20 @@
             border-radius: 30px;
             border: 3px solid #7e08a5;
             cursor: pointer;
+            background-color: transparent;
         }
         button a{
             color: black;
             text-decoration: none;
             cursor: pointer;
         }
-
+        button:hover{
+            background-color: #7e08a5;
+            color: white;
+        }
+        button a:hover{
+            color: white;
+        }
 
     </style>
 </head>

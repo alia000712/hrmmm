@@ -23,16 +23,17 @@ public class SalesDao
         return connection;
     }
 
-    public void addSales(sales sl) throws SQLException
+    public void addSalesAdmin(sales sl) throws SQLException
     {
         try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("insert into sales (salesamount,salesdate,saleswalkin,salesbooking,branchid) values(?,?,?,?,?)");)
+             PreparedStatement preparedStatement = connection.prepareStatement("insert into sales (salesamount,salesdate,saleswalkin,salesbooking,branchid,adminid) values(?,?,?,?,?,?)");)
         {
             preparedStatement.setDouble(1, sl.getSalesAmount());
-            preparedStatement.setString(2, sl.getSalesDate());
+            preparedStatement.setDate(2, sl.getSalesDate());
             preparedStatement.setDouble(3, sl.getSalesWalkin());
             preparedStatement.setDouble(4, sl.getSalesBooking());
             preparedStatement.setString(5, sl.getBranchID());
+            preparedStatement.setInt(6, sl.getAdminID());
             out.println(preparedStatement);
             preparedStatement.executeUpdate();
 
@@ -40,18 +41,56 @@ public class SalesDao
         catch (SQLException e) {printSQLException(e);}
     }
 
-    public boolean updateSales(sales sl) throws SQLException
+    public void addSalesWorker(sales sl) throws SQLException
+    {
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement("insert into sales (salesamount,salesdate,saleswalkin,salesbooking,branchid,workerid) values(?,?,?,?,?,?)");)
+        {
+            preparedStatement.setDouble(1, sl.getSalesAmount());
+            preparedStatement.setDate(2, sl.getSalesDate());
+            preparedStatement.setDouble(3, sl.getSalesWalkin());
+            preparedStatement.setDouble(4, sl.getSalesBooking());
+            preparedStatement.setString(5, sl.getBranchID());
+            preparedStatement.setInt(6, sl.getWorkerID());
+            out.println(preparedStatement);
+            preparedStatement.executeUpdate();
+
+        }
+        catch (SQLException e) {printSQLException(e);}
+    }
+
+    public boolean updateSalesAdmin(sales sl) throws SQLException
     {
         boolean rowUpdated;
         try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement("UPDATE sales set salesamount=?,salesdate=?,saleswalkin=?, salesbooking=?,branchid=? where salesid=?");)
+             PreparedStatement statement = connection.prepareStatement("UPDATE sales set salesamount=?,salesdate=?,saleswalkin=?, salesbooking=?,branchid=? ,adminid=?, workerid=null where salesid=?");)
         {
             statement.setDouble(1, sl.getSalesAmount());
-            statement.setString(2, sl.getSalesDate());
+            statement.setDate(2, sl.getSalesDate());
             statement.setDouble(3, sl.getSalesWalkin());
             statement.setDouble(4, sl.getSalesBooking());
             statement.setString(5, sl.getBranchID());
-            statement.setInt(6, sl.getSalesID());
+            statement.setInt(6,sl.getAdminID());
+            statement.setInt(7,sl.getSalesID());
+
+            rowUpdated = statement.executeUpdate() > 0;
+        }
+        return rowUpdated;
+    }
+
+    public boolean updateSalesWorker(sales sl) throws SQLException
+    {
+        boolean rowUpdated;
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement("UPDATE sales set salesamount=?,salesdate=?,saleswalkin=?, salesbooking=?,branchid=? ,adminid=null, workerid=? where salesid=?");)
+        {
+            statement.setDouble(1, sl.getSalesAmount());
+            statement.setDate(2, sl.getSalesDate());
+            statement.setDouble(3, sl.getSalesWalkin());
+            statement.setDouble(4, sl.getSalesBooking());
+            statement.setString(5, sl.getBranchID());
+            statement.setInt(6,sl.getWorkerID());
+            statement.setInt(7,sl.getSalesID());
 
             rowUpdated = statement.executeUpdate() > 0;
         }

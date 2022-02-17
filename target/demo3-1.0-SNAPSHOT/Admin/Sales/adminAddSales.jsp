@@ -26,6 +26,7 @@
             <img src="../../image/logo.png" style="width:150px; height:150px" >
             <h1>ADD SALES</h1>
             <div class="rectangle"></div><br>
+            <input type="hidden" name="adminid" value="${adm.adminID}">
             <input type="date" name="salesdate" placeholder="Sales Date"><br><br>
             <input type="text" name="saleswalkin" placeholder="Walkin Sales"><br><br>
             <input type="text" name="salesbooking" placeholder="Booking Sales"><br><br>
@@ -68,7 +69,7 @@
                     catch (Exception e) {e.printStackTrace();}
                 %>
             </select><br><br>
-            <input type="hidden" name="action" value="addsales">
+            <input type="hidden" name="action" value="addsalesadmin">
             <button type="submit" name="submit" onclick="form.action='../../SalesServlet'">ADD</button>
         </center>
     </div>

@@ -27,12 +27,14 @@
             font-size:20px;
             width: 20%;
             padding: 16px 8px;
+            border: none;
         }
         .rectangle
         {
             height: 10px;
             width: 800px;
             background-color: white;
+            border-radius: 50px;
         }
 
         button a

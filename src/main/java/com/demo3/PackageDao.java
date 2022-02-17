@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 import static java.lang.System.out;
 
-public class BranchDao
+public class PackageDao
 {
     String dbURL = "jdbc:postgresql://ec2-50-19-32-96.compute-1.amazonaws.com:5432/d65mb698aandvt"; //ni url dri heroku database
     String user = "ffkacpfvbcmcwa";
@@ -26,44 +26,40 @@ public class BranchDao
         return connection;
     }
 
-    public void addBranch(branch br) throws SQLException
+    public void addPackage(Package pk) throws SQLException
     {
         try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("insert into branch (branchid,branchname,branchaddress,branchphone,numofworker) values(?,?,?,?,?)");)
+             PreparedStatement preparedStatement = connection.prepareStatement("insert into package (packageid,packagename,packageprice) values(?,?,?)");)
         {
-            preparedStatement.setString(1, br.getBranchID());
-            preparedStatement.setString(2, br.getBranchName());
-            preparedStatement.setString(3, br.getBranchAddress());
-            preparedStatement.setString(4, br.getBranchPhone());
-            preparedStatement.setInt(5,br.getNumOfWorker());
+            preparedStatement.setString(1, pk.getPackageID());
+            preparedStatement.setString(2, pk.getPackageName());
+            preparedStatement.setDouble(3, pk.getPackagePrice());
             out.println(preparedStatement);
             preparedStatement.executeUpdate();
         }
         catch (SQLException e) {printSQLException(e);}
     }
 
-    public boolean updateBranch(branch br) throws SQLException
+    public boolean updatePackage(Package pk) throws SQLException
     {
         boolean rowUpdated;
         try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement("UPDATE branch set branchname=?,branchaddress=?,branchphone=?, numofworker=? where branchid=?");)
+             PreparedStatement statement = connection.prepareStatement("UPDATE package set packagename=?,packageprice=? where packageid=?");)
         {
-            statement.setString(1, br.getBranchName());
-            statement.setString(2, br.getBranchAddress());
-            statement.setString(3, br.getBranchPhone());
-            statement.setInt(4, br.getNumOfWorker());
-            statement.setString(5, br.getBranchID());
+            statement.setString(1, pk.getPackageName());
+            statement.setDouble(2, pk.getPackagePrice());
+            statement.setString(3, pk.getPackageID());
 
             rowUpdated = statement.executeUpdate() > 0;
         }
         return rowUpdated;
     }
 
-    public boolean deleteBranch(String id) throws SQLException
+    public boolean deletePackage(String id) throws SQLException
     {
         boolean rowDeleted;
         try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement("delete from branch where branchid=?");)
+             PreparedStatement statement = connection.prepareStatement("delete from package where packageid=?");)
         {
             statement.setString(1, id);
             rowDeleted = statement.executeUpdate() > 0;

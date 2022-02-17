@@ -45,6 +45,7 @@
         <table>
             <tr>
                 <th>ID</th>
+                <th>PERSON IN CHARGE</th>
                 <th>AMOUNT</th>
                 <th>SALES DATE</th>
                 <th>SALES WALKIN</th>
@@ -62,9 +63,9 @@
                     Connection conn = DriverManager.getConnection(dbURL, user, pass);
 
                     String sql  ="SELECT s.salesid,s.salesamount,s.salesdate," +
-                            "s.saleswalkin,s.salesbooking,s.branchid," +
+                            "s.saleswalkin,s.salesbooking,s.branchid,s.adminid,s.workerid," +
                             "b.branchname FROM SALES s join branch b " +
-                            "on (s.branchid=b.branchid)";
+                            "on (s.branchid=b.branchid) order by s.salesid";
 
                     if (conn != null)
                     {
@@ -80,24 +81,42 @@
 
                         while (res.next())
                         {
+
             %>
             <tr>
                 <td><%=res.getInt("salesid")%></td>
-                <td><%=res.getString("salesamount")%></td>
-                <td><%=res.getString("salesdate")%></td>
-                <td><%=res.getString("saleswalkin")%></td>
-                <td><%=res.getString("salesbooking")%></td>
+                <%
+                    if(res.getInt("adminid")==1)
+                    {
+                %>
+                <td><%=res.getInt("adminid")%></td>
+                <%
+                    }
+                    else
+                    {
+                %>
+                <td><%=res.getInt("workerid")%></td>
+                <%
+                    }
+                %>
+
+                <td><%=res.getDouble("salesamount")%></td>
+                <td><%=res.getDate("salesdate")%></td>
+                <td><%=res.getDouble("saleswalkin")%></td>
+                <td><%=res.getDouble("salesbooking")%></td>
                 <td><%=res.getString("branchid")%></td>
 
                 <form action="" method="post">
                     <input type="hidden" name="salesid" value="<%=res.getInt("salesid")%>">
-                    <input type="hidden" name="salesamount" value="<%=res.getString("salesamount")%>">
-                    <input type="hidden" name="salesdate" value="<%=res.getString("salesdate")%>">
-                    <input type="hidden" name="saleswalkin" value="<%=res.getString("saleswalkin")%>">
-                    <input type="hidden" name="salesbooking" value="<%=res.getString("salesbooking")%>">
+                    <input type="hidden" name="salesamount" value="<%=res.getDouble("salesamount")%>">
+                    <input type="hidden" name="salesdate" value="<%=res.getDate("salesdate")%>">
+                    <input type="hidden" name="saleswalkin" value="<%=res.getDouble("saleswalkin")%>">
+                    <input type="hidden" name="salesbooking" value="<%=res.getDouble("salesbooking")%>">
                     <input type="hidden" name="branchid" value="<%=res.getString("branchid")%>">
                     <input type="hidden" name="branchname" value="<%=res.getString("branchname")%>">
-                    <input type="hidden" name="action" value="viewsales">
+                    <input type="hidden" name="adminid" value="<%=res.getInt("adminid")%>">
+                    <input type="hidden" name="workerid" value="<%=res.getInt("workerid")%>">
+                    <input type="hidden" name="action" value="viewsalesadmin">
                     <td><button type="submit" name="submit" onclick="form.action='../../SalesServlet'" >EDIT</button></td>
                 </form>
             </tr>

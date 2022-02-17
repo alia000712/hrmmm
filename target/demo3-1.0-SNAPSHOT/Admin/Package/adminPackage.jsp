@@ -50,11 +50,11 @@
     <center>
         <br><br><br>
         <h2>ADD NEW PACKAGE</h2>
-        <button><a href="../Sales/adminAddSales.jsp">ADD</a></button>
+        <button><a href="../Package/adminAddPackage.jsp">ADD</a></button>
         <br><br><br>
         <div class="rectangle"></div><br>
         <h2>VIEW PACKAGE</h2>
-        <button><a href="../Sales/adminViewSales.jsp">VIEW</a></button>
+        <button><a href="../Package/adminViewPackage.jsp">VIEW</a></button>
     </center>
 </div>
 </body>

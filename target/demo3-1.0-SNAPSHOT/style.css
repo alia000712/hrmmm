@@ -69,16 +69,22 @@
 }
 .neon-wrapper{
     display: inline-flex;
+    margin-left: 0;
+    margin-right: 0;
 }
 .txt::before{
     content: "N'Barbershop";
     position: absolute;
     mix-blend-mode: difference;
     filter: blur(2px);
+    margin-left: 0;
+    margin-right: 0;
 }
 .neon-wrapper{
     display: inline-flex;
     filter: brightness(150%);
+    margin-left: 0;
+    margin-right: 0;
 }
 .booking-system h3{
     font-size: 35px;
@@ -87,14 +93,13 @@
     alignment: center;
     color: cornflowerblue;
 }
-.navbar.active ul li{
+.navbar ul li.active{
     list-style: none;
     display: inline-block;
     margin: 0 20px;
     position: relative;
 }
-.navbar.active ul li a{
-    text-decoration: 3px cornflowerblue underline;
-    color: white;
+.navbar ul li a.active{
+    color: deepskyblue;
     text-transform: uppercase;
 }
