@@ -98,6 +98,8 @@ public class CustomerServlet extends HttpServlet
 
             String sql  ="SELECT * from customer";
 
+            boolean notFound=true;
+
             if (conn != null)
             {
                 DatabaseMetaData dm = conn.getMetaData();
@@ -114,6 +116,7 @@ public class CustomerServlet extends HttpServlet
                 {
                     if(custusername.equals(res.getString("custusername")) && custpass.equals(res.getString("custpass")))
                     {
+                        notFound=false;
                         session.setAttribute("custid",res.getString(1));
                         customer cust = new customer();
 
@@ -128,10 +131,12 @@ public class CustomerServlet extends HttpServlet
                         session.setAttribute("cust", cust);
                         response.sendRedirect("Customer/Home/custHome.jsp");
                     }
-                    else
-                    {
-                        out.println("User not exist");
-                    }
+                }
+
+                if(notFound)
+                {
+                    out.println("<script>alert('User not found');</script>");
+                    out.println("<script>window.location.href='cust-createAcc.jsp'</script>");
                 }
             }
         }

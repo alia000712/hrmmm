@@ -106,6 +106,7 @@ public class WorkerServlet extends HttpServlet
             Connection conn = DriverManager.getConnection(dbURL, user, pass);
 
             String sql  ="SELECT * from worker";
+            boolean notFound=true;
 
             if (conn != null)
             {
@@ -123,6 +124,7 @@ public class WorkerServlet extends HttpServlet
                 {
                     if(workeremail.equals(res.getString("workeremail")) && workeric.equals(res.getString("workeric")))
                     {
+                        notFound=false;
                         session.setAttribute("workerid",res.getString(1));
                         worker wk = new worker();
 
@@ -137,10 +139,11 @@ public class WorkerServlet extends HttpServlet
                         session.setAttribute("wk", wk);
                         response.sendRedirect("Worker/Home/workerHome.jsp");
                     }
-                    else
-                    {
-                        out.println("User not exist");
-                    }
+                }
+                if(notFound)
+                {
+                    out.println("<script>alert('User not found');</script>");
+                    out.println("<script>window.location.href='worker-createAcc.jsp'</script>");
                 }
             }
         }

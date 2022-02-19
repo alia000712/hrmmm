@@ -67,6 +67,8 @@ public class AdminServlet extends HttpServlet {
 
             String sql  ="SELECT * from admin";
 
+            boolean notFound = true;
+
             if (conn != null)
             {
                 DatabaseMetaData dm = conn.getMetaData();
@@ -83,6 +85,7 @@ public class AdminServlet extends HttpServlet {
                 {
                     if(adminusername.equals(res.getString("adminusername")) && adminpass.equals(res.getString("adminpass")))
                     {
+                        notFound = false;
                         session.setAttribute("adminid",res.getInt(1));
                         admin adm = new admin();
 
@@ -93,10 +96,12 @@ public class AdminServlet extends HttpServlet {
                         session.setAttribute("adm", adm);
                         response.sendRedirect("Admin/Home/adminHome.jsp");
                     }
-                    else
-                    {
-                        out.println("User not exist");
-                    }
+                }
+
+                if(notFound)
+                {
+                    out.println("<script>alert('User not found');</script>");
+                    out.println("<script>window.location.href='admin-createAcc.jsp'</script>");
                 }
             }
         }
