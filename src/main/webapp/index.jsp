@@ -68,11 +68,13 @@
             <div class="welcome">
                 <h3>Welcome To...</h3>
             </div>
-        </center>
 
             <div class="neon-wrapper">
                 <span class="txt">N'Barbershop</span>
             </div>
+        </center>
+
+
 
             <div class="booking-system">
                 <h3><%= "Booking System" %></h3>
