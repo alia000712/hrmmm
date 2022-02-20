@@ -23,9 +23,9 @@
         }
         .container{
             width: 50%;
-            height: 85%;
+            height: 90%;
             background: white;
-            top: 50%;
+            top: 45%;
             left: 50%;
             border-radius: 30px;
             position: absolute;
@@ -146,7 +146,7 @@
                         <input type="text" placeholder="username" name="custusername" value="${cust.custUsername}">
                     </td>
                 </tr>
-            </table><br/><br/>
+            </table><br/>
             <input type="hidden" name="action" value="update">
             <button type="submit" class="btn-edit" name="submit" onclick="form.action='../../CustomerServlet'" >UPDATE</button>
             <button><a href="custViewProfile.jsp">CANCEL</a></button>
