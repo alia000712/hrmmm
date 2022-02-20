@@ -73,19 +73,27 @@
             </tr>
             <tr>
                 <td style="text-align: right">Booking ID</td>
-                <td style="text-align: left">: <input type="text" name="bookingid" value="${bk.bookingID}" readonly></td>
+                <td style="text-align: left">: <input type="text" value="${bk.bookingID}" readonly></td>
             </tr>
             <tr>
-                <td style="text-align: right">Booking ID</td>
-                <td style="text-align: left">: <input type="text" readonly></td>
+                <td style="text-align: right">Booking Date</td>
+                <td style="text-align: left">: <input type="text" value="${bk.bookingDate}" readonly></td>
             </tr>
             <tr>
-                <td style="text-align: right">Booking ID</td>
-                <td style="text-align: left">: <input type="text" readonly></td>
+                <td style="text-align: right">Booking Time</td>
+                <td style="text-align: left">: <input type="text" value="${bk.bookingTime}" readonly></td>
             </tr>
             <tr>
-                <td style="text-align: right">Booking ID</td>
-                <td style="text-align: left">: <input type="text" readonly></td>
+                <td style="text-align: right">Package Name</td>
+                <td style="text-align: left">: <input type="text" value="${pk.packageName}" readonly></td>
+            </tr>
+            <tr>
+                <td style="text-align: right">Package Price</td>
+                <td style="text-align: left">: <input type="text" value="${pk.packagePrice}" readonly></td>
+            </tr>
+            <tr>
+                <td style="text-align: right">Branch Name</td>
+                <td style="text-align: left">: <input type="text" value="${br.branchName}" readonly></td>
             </tr>
         </table><br/><br/>
         <button onclick="window.print()">PRINT</button>
