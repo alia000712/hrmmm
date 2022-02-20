@@ -19,10 +19,12 @@ public class CustomerServlet extends HttpServlet
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {}
+    protected void doGet(HttpServletRequest request,
+    HttpServletResponse response) throws ServletException, IOException {}
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    protected void doPost(HttpServletRequest request,
+    HttpServletResponse response) throws ServletException, IOException
     {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
@@ -39,25 +41,22 @@ public class CustomerServlet extends HttpServlet
                     login(request, response);
                     break;
                 case "delete":
-                    deleteUser(request, response);
-                    break;
-                case "/edit":
-                    /*showEditForm(request, response);*/
+                    deleteCust(request, response);
                     break;
                 case "update":
-                    updateUser(request, response);
+                    updateCust(request, response);
                     break;
                 default:
-                    /*listUser(request, response);*/
                     break;
             }
         }
         catch (SQLException ex) {throw new ServletException(ex);}
     }
 
-    /*######################################################( SINGNUP )#############################################################*/
+    /*################################( SIGN UP )#####################################*/
 
-    private void signup(HttpServletRequest request,HttpServletResponse response) throws SQLException, IOException
+    private void signup(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException
     {
         String custname = request.getParameter("custname");
         String custphone = request.getParameter("custphone");
@@ -78,9 +77,10 @@ public class CustomerServlet extends HttpServlet
         response.sendRedirect("cust-createAcc.jsp");
     }
 
-    /*######################################################( LOGIN )#############################################################*/
+    /*################################( LOGIN )#####################################*/
 
-    private void login(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException
+    private void login(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException
     {
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
@@ -90,10 +90,10 @@ public class CustomerServlet extends HttpServlet
 
         try
         {
-            Class.forName("org.postgresql.Driver"); // ni stay
-            String dbURL = "jdbc:postgresql://ec2-50-19-32-96.compute-1.amazonaws.com:5432/d65mb698aandvt"; //ni url dri heroku database
-            String user = "ffkacpfvbcmcwa"; //ni user dri heroku database
-            String pass = "3939ef811721250f3db1595eb911cfcbac4e294a582158f13f9ef08dc63786bf"; //ni password dri heroku database
+            Class.forName("org.postgresql.Driver");
+            String dbURL = "jdbc:postgresql://ec2-50-19-32-96.compute-1.amazonaws.com:5432/d65mb698aandvt";
+            String user = "ffkacpfvbcmcwa";
+            String pass = "3939ef811721250f3db1595eb911cfcbac4e294a582158f13f9ef08dc63786bf";
             Connection conn = DriverManager.getConnection(dbURL, user, pass);
 
             String sql  ="SELECT * from customer";
@@ -114,7 +114,8 @@ public class CustomerServlet extends HttpServlet
 
                 while (res.next())
                 {
-                    if(custusername.equals(res.getString("custusername")) && custpass.equals(res.getString("custpass")))
+                    if(custusername.equals(res.getString("custusername"))
+                            && custpass.equals(res.getString("custpass")))
                     {
                         notFound=false;
                         session.setAttribute("custid",res.getString(1));
@@ -140,14 +141,14 @@ public class CustomerServlet extends HttpServlet
                 }
             }
         }
-
         catch (Exception e) {e.printStackTrace();}
     }
 
 
-    /*######################################################( UPDATE )#############################################################*/
+    /*################################( UPDATE )#####################################*/
 
-    private void updateUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException
+    private void updateCust(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException, ServletException
     {
         HttpSession session = request.getSession();
         int custid = Integer.parseInt(request.getParameter("custid"));
@@ -174,12 +175,55 @@ public class CustomerServlet extends HttpServlet
         response.sendRedirect("Customer/Profile/custViewProfile.jsp");
     }
 
-    /*######################################################( DELETE )#############################################################*/
+    /*################################( DELETE )#####################################*/
 
-    private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException
+    private void deleteCust(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException
     {
+        PrintWriter out = response.getWriter();
         int custid = Integer.parseInt(request.getParameter("custid"));
-        cd.deleteUser(custid);
-        response.sendRedirect("Admin/Cust/adminViewCust.jsp");
+
+        try
+        {
+            Class.forName("org.postgresql.Driver"); // ni stay
+            String dbURL = "jdbc:postgresql://ec2-50-19-32-96.compute-1.amazonaws.com:5432/d65mb698aandvt";
+            String user = "ffkacpfvbcmcwa";
+            String pass = "3939ef811721250f3db1595eb911cfcbac4e294a582158f13f9ef08dc63786bf";
+            Connection conn = DriverManager.getConnection(dbURL, user, pass);
+
+            String sql  ="select custid from customer except " +
+                         "select c.custid from customer c join booking b on (c.custid=b.custid);";
+
+            boolean notDelete = true;
+
+            if (conn != null)
+            {
+                DatabaseMetaData dm = conn.getMetaData();
+                System.out.println("Driver name: " + dm.getDriverName());
+                System.out.println("Driver version: " + dm.getDriverVersion());
+                System.out.println("Product Name: " + dm.getDatabaseProductName());
+                System.out.println("Product version: " + dm.getDatabaseProductVersion());
+
+                Statement statement = conn.createStatement();
+                ResultSet res = statement.executeQuery(sql);
+
+                while (res.next())
+                {
+                    if(custid==(res.getInt("custid")))
+                    {
+                        notDelete = false;
+                        cd.deleteUser(custid);
+                        out.println("<script>alert('User had been deleted');</script>");
+                        out.println("<script>window.location.href='Admin/Cust/adminViewCust.jsp'</script>");
+                    }
+                }
+                if(notDelete)
+                {
+                    out.println("<script>alert('Cannot delete the user because the user is an active user');</script>");
+                    out.println("<script>window.location.href='Admin/Cust/adminViewCust.jsp'</script>");
+                }
+            }
+        }
+        catch (Exception e) {e.printStackTrace();}
     }
 }

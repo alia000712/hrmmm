@@ -67,7 +67,7 @@
 
                     String sql  ="SELECT w.workerid,w.workername,w.workeremail,w.workeraddress,w.workeric," +
                             "w.branchid,w.workerphone, b.branchname from worker w " +
-                            "join branch b on w.branchid=b.branchid order by w.workerid";
+                            "join branch b on w.branchid=b.branchid where w.workerid not in (0) order by w.workerid";
 
                     if (conn != null)
                     {

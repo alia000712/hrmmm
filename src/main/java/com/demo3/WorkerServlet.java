@@ -18,17 +18,13 @@ public class WorkerServlet extends HttpServlet
         wd = new WorkerDao();
     }
 
-    private BranchDao bd;
-    public void init2()
-    {
-        bd = new BranchDao();
-    }
+    @Override
+    protected void doGet(HttpServletRequest request,
+    HttpServletResponse response) throws ServletException, IOException {}
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {}
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    protected void doPost(HttpServletRequest request,
+    HttpServletResponse response) throws ServletException, IOException
     {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
@@ -47,9 +43,6 @@ public class WorkerServlet extends HttpServlet
                 case "delete":
                     deleteWorker(request, response);
                     break;
-                case "/edit":
-                    /*showEditForm(request, response);*/
-                    break;
                 case "update":
                     updateWorker(request, response);
                     break;
@@ -57,16 +50,16 @@ public class WorkerServlet extends HttpServlet
                     viewWorker(request, response);
                     break;
                 default:
-                    /*listUser(request, response);*/
                     break;
             }
         }
         catch (SQLException ex) {throw new ServletException(ex);}
     }
 
-    /*######################################################( REGISTER )#############################################################*/
+    /*################################( REGISTER )#####################################*/
 
-    private void register(HttpServletRequest request,HttpServletResponse response) throws SQLException, IOException
+    private void register(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException
     {
         String workername = request.getParameter("workername");
         String workerphone = request.getParameter("workerphone");
@@ -87,9 +80,10 @@ public class WorkerServlet extends HttpServlet
         response.sendRedirect("Admin/Worker/adminViewWorker.jsp");
     }
 
-    /*######################################################( LOGIN )#############################################################*/
+    /*################################( LOGIN )#####################################*/
 
-    private void login(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException
+    private void login(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException
     {
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
@@ -99,10 +93,10 @@ public class WorkerServlet extends HttpServlet
 
         try
         {
-            Class.forName("org.postgresql.Driver"); // ni stay
-            String dbURL = "jdbc:postgresql://ec2-50-19-32-96.compute-1.amazonaws.com:5432/d65mb698aandvt"; //ni url dri heroku database
-            String user = "ffkacpfvbcmcwa"; //ni user dri heroku database
-            String pass = "3939ef811721250f3db1595eb911cfcbac4e294a582158f13f9ef08dc63786bf"; //ni password dri heroku database
+            Class.forName("org.postgresql.Driver");
+            String dbURL = "jdbc:postgresql://ec2-50-19-32-96.compute-1.amazonaws.com:5432/d65mb698aandvt";
+            String user = "ffkacpfvbcmcwa";
+            String pass = "3939ef811721250f3db1595eb911cfcbac4e294a582158f13f9ef08dc63786bf";
             Connection conn = DriverManager.getConnection(dbURL, user, pass);
 
             String sql  ="SELECT * from worker";
@@ -122,7 +116,8 @@ public class WorkerServlet extends HttpServlet
 
                 while (res.next())
                 {
-                    if(workeremail.equals(res.getString("workeremail")) && workeric.equals(res.getString("workeric")))
+                    if(workeremail.equals(res.getString("workeremail")) &&
+                            workeric.equals(res.getString("workeric")))
                     {
                         notFound=false;
                         session.setAttribute("workerid",res.getString(1));
@@ -152,9 +147,10 @@ public class WorkerServlet extends HttpServlet
     }
 
 
-    /*######################################################( UPDATE )#############################################################*/
+    /*################################( UPDATE )#####################################*/
 
-    private void updateWorker(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException
+    private void updateWorker(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException, ServletException
     {
         HttpSession session = request.getSession();
         int workerid = Integer.parseInt(request.getParameter("workerid"));
@@ -181,9 +177,10 @@ public class WorkerServlet extends HttpServlet
         response.sendRedirect("Admin/Worker/adminViewWorker.jsp");
     }
 
-    /*######################################################( VIEW )#############################################################*/
+    /*################################( VIEW )#####################################*/
 
-    private void viewWorker(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException
+    private void viewWorker(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException, ServletException
     {
         HttpSession session = request.getSession();
         int workerid = Integer.parseInt(request.getParameter("workerid"));
@@ -212,9 +209,10 @@ public class WorkerServlet extends HttpServlet
         response.sendRedirect("Admin/Worker/adminEditWorker.jsp");
     }
 
-    /*######################################################( DELETE )#############################################################*/
+    /*################################( DELETE )#####################################*/
 
-    private void deleteWorker(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException
+    private void deleteWorker(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException
     {
         int workerid = Integer.parseInt(request.getParameter("workerid"));
         wd.deleteWorker(workerid);

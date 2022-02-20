@@ -44,7 +44,7 @@
                         String pass = "3939ef811721250f3db1595eb911cfcbac4e294a582158f13f9ef08dc63786bf"; //ni password dri heroku database
                         Connection conn = DriverManager.getConnection(dbURL, user, pass);
 
-                        String sql  ="SELECT * from branch";
+                        String sql  ="SELECT * from branch where branchid not in ('0');";
 
                         if (conn != null)
                         {

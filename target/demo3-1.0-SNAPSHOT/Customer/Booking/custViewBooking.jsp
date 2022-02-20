@@ -110,12 +110,12 @@
                     <input name="packagename" value="<%=res.getString("packagename")%>" hidden>
                     <input name="branchname" value="<%=res.getString("branchname")%>" hidden>
 
-                    <input type="hidden" name="action" value="view">
+                    <input type="hidden" name="action" value="viewcust">
                     <td><button type="submit" name="submit" onclick="form.action='../../BookingServlet'">EDIT</button></td>
                 </form>
 
                 <form action="" method="post">
-                    <input type="hidden" name="action" value="deletecust">
+                    <input type="hidden" name="action" value="delete">
                     <input type="hidden" name="bookingid" value="<%=res.getInt("bookingid")%>">
                     <td><button type="submit" name="submit" onclick="form.action='../../BookingServlet'">DELETE</button></td>
                 </form>

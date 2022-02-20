@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.sql.Time;
-import java.sql.*;
 
 @WebServlet(name = "BookingServlet", value = "/BookingServlet")
 public class BookingServlet extends HttpServlet
@@ -20,10 +18,12 @@ public class BookingServlet extends HttpServlet
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {}
+    protected void doGet(HttpServletRequest request,
+    HttpServletResponse response) throws ServletException, IOException {}
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    protected void doPost(HttpServletRequest request,
+    HttpServletResponse response) throws ServletException, IOException
     {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
@@ -36,17 +36,14 @@ public class BookingServlet extends HttpServlet
                 case "addbooking":
                     addBooking(request, response);
                     break;
-                case "view":
-                    viewBooking(request, response);
+                case "viewcust":
+                    viewBookingCust(request, response);
                     break;
                 case "viewworker":
                     viewBookingWorker(request, response);
                     break;
-                case "deletecust":
-                    deleteBookingCust(request, response);
-                    break;
-                case "/edit":
-                    /*showEditForm(request, response);*/
+                case "delete":
+                    deleteBooking(request, response);
                     break;
                 case "updatecust":
                     updateBookingCust(request, response);
@@ -55,16 +52,16 @@ public class BookingServlet extends HttpServlet
                     updateBookingWorker(request, response);
                     break;
                 default:
-                    /*listUser(request, response);*/
                     break;
             }
         }
         catch (SQLException ex) {throw new ServletException(ex);}
     }
 
-    /*######################################################( SINGNUP )#############################################################*/
+    /*################################( ADD BOOKING )#####################################*/
 
-    private void addBooking(HttpServletRequest request,HttpServletResponse response) throws SQLException, IOException
+    private void addBooking(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException
     {
         String branchid = request.getParameter("branchid");
         Date bookingdate = Date.valueOf(request.getParameter("bookingdate"));
@@ -83,10 +80,10 @@ public class BookingServlet extends HttpServlet
         response.sendRedirect("Customer/Booking/custViewBooking.jsp");
     }
 
+    /*################################( UPDATE BOOKING )#####################################*/
 
-    /*######################################################( UPDATE )#############################################################*/
-
-    private void updateBookingCust(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException
+    private void updateBookingCust(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException, ServletException
     {
         HttpSession session = request.getSession();
         String branchid = request.getParameter("branchid");
@@ -111,7 +108,8 @@ public class BookingServlet extends HttpServlet
         response.sendRedirect("Customer/Booking/custViewBooking.jsp");
     }
 
-    private void updateBookingWorker(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException
+    private void updateBookingWorker(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException, ServletException
     {
         HttpSession session = request.getSession();
         String branchid = request.getParameter("branchid");
@@ -138,9 +136,10 @@ public class BookingServlet extends HttpServlet
         response.sendRedirect("Worker/Booking/workerViewBooking.jsp");
     }
 
-    /*######################################################( VIEW )#############################################################*/
+    /*################################( VIEW BOOKING )#####################################*/
 
-    private void viewBooking(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException
+    private void viewBookingCust(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException, ServletException
     {
         HttpSession session = request.getSession();
         String branchid = request.getParameter("branchid");
@@ -172,7 +171,10 @@ public class BookingServlet extends HttpServlet
         response.sendRedirect("Customer/Booking/custEditBooking.jsp");
     }
 
-    private void viewBookingWorker(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException
+    /*################################( VIEW BOOKING )#####################################*/
+
+    private void viewBookingWorker(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException, ServletException
     {
         HttpSession session = request.getSession();
         String branchid = request.getParameter("branchid");
@@ -204,9 +206,10 @@ public class BookingServlet extends HttpServlet
         response.sendRedirect("Worker/Booking/workerEditBooking.jsp");
     }
 
-    /*######################################################( DELETE )#############################################################*/
+    /*################################( DELETE BOOKING )#####################################*/
 
-    private void deleteBookingCust(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException
+    private void deleteBooking(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException
     {
         int bookingid = Integer.parseInt(request.getParameter("bookingid"));
         bkd.deleteBookingCust(bookingid);

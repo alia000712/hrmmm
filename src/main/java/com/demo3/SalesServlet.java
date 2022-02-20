@@ -17,10 +17,12 @@ public class SalesServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {}
+    protected void doGet(HttpServletRequest request,
+    HttpServletResponse response) throws ServletException, IOException {}
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    protected void doPost(HttpServletRequest request,
+    HttpServletResponse response) throws ServletException, IOException
     {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
@@ -42,9 +44,6 @@ public class SalesServlet extends HttpServlet {
                 case "viewsalesworker":
                     viewSalesWorker(request, response);
                     break;
-                case "/edit":
-                    /*showEditForm(request, response);*/
-                    break;
                 case "updatesalesadmin":
                     updateSalesAdmin(request, response);
                     break;
@@ -52,16 +51,16 @@ public class SalesServlet extends HttpServlet {
                     updateSalesWorker(request, response);
                     break;
                 default:
-                    /*listUser(request, response);*/
                     break;
             }
         }
         catch (SQLException ex) {throw new ServletException(ex);}
     }
 
-    /*######################################################( SINGNUP )#############################################################*/
+    /*################################( ADD SALES )#####################################*/
 
-    private void addSalesAdmin(HttpServletRequest request,HttpServletResponse response) throws SQLException, IOException
+    private void addSalesAdmin(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException
     {
         Date salesdate = Date.valueOf(request.getParameter("salesdate"));
         double saleswalkin = Double.parseDouble(request.getParameter("saleswalkin"));
@@ -83,8 +82,10 @@ public class SalesServlet extends HttpServlet {
         response.sendRedirect("Admin/Sales/adminViewSales.jsp");
     }
 
+    /*################################( ADD SALES )#####################################*/
 
-    private void addSalesWorker(HttpServletRequest request,HttpServletResponse response) throws SQLException, IOException
+    private void addSalesWorker(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException
     {
         Date salesdate = Date.valueOf(request.getParameter("salesdate"));
         double saleswalkin = Double.parseDouble(request.getParameter("saleswalkin"));
@@ -106,10 +107,10 @@ public class SalesServlet extends HttpServlet {
         response.sendRedirect("Worker/Sales/workerViewSales.jsp");
     }
 
+    /*################################( UPDATE SALES )#####################################*/
 
-    /*######################################################( UPDATE )#############################################################*/
-
-    private void updateSalesAdmin(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException
+    private void updateSalesAdmin(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException, ServletException
     {
         HttpSession session = request.getSession();
         int salesid = Integer.parseInt(request.getParameter("salesid"));
@@ -139,8 +140,10 @@ public class SalesServlet extends HttpServlet {
         response.sendRedirect("Admin/Sales/adminViewSales.jsp");
     }
 
+    /*################################( UPDATE SALES )#####################################*/
 
-    private void updateSalesWorker(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException
+    private void updateSalesWorker(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException, ServletException
     {
         HttpSession session = request.getSession();
         int salesid = Integer.parseInt(request.getParameter("salesid"));
@@ -170,11 +173,13 @@ public class SalesServlet extends HttpServlet {
         response.sendRedirect("Worker/Sales/workerViewSales.jsp");
     }
 
-    /*######################################################( VIEW )#############################################################*/
+    /*################################( VIEW SALES )#####################################*/
 
-    private void viewSalesAdmin(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException
+    private void viewSalesAdmin(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException, ServletException
     {
         HttpSession session = request.getSession();
+
         int salesid = Integer.parseInt(request.getParameter("salesid"));
         Date salesdate = Date.valueOf(request.getParameter("salesdate"));
         double saleswalkin = Double.parseDouble(request.getParameter("saleswalkin"));
@@ -203,9 +208,13 @@ public class SalesServlet extends HttpServlet {
         response.sendRedirect("Admin/Sales/adminEditSales.jsp");
     }
 
-    private void viewSalesWorker(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException
+    /*################################( VIEW SALES )#####################################*/
+
+    private void viewSalesWorker(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException, ServletException
     {
         HttpSession session = request.getSession();
+
         int salesid = Integer.parseInt(request.getParameter("salesid"));
         Date salesdate = Date.valueOf(request.getParameter("salesdate"));
         double saleswalkin = Double.parseDouble(request.getParameter("saleswalkin"));

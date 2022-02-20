@@ -18,10 +18,12 @@ public class BranchServlet extends HttpServlet
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {}
+    protected void doGet(HttpServletRequest request,
+    HttpServletResponse response) throws ServletException, IOException {}
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    protected void doPost(HttpServletRequest request,
+    HttpServletResponse response) throws ServletException, IOException
     {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
@@ -40,23 +42,20 @@ public class BranchServlet extends HttpServlet
                 case "delete":
                     deleteBranch(request, response);
                     break;
-                case "/edit":
-                    /*showEditForm(request, response);*/
-                    break;
                 case "update":
                     updateBranch(request, response);
                     break;
                 default:
-                    /*listUser(request, response);*/
                     break;
             }
         }
         catch (SQLException ex) {throw new ServletException(ex);}
     }
 
-    /*######################################################( SINGNUP )#############################################################*/
+    /*################################( ADD BRANCH )#####################################*/
 
-    private void addBranch(HttpServletRequest request,HttpServletResponse response) throws SQLException, IOException
+    private void addBranch(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException
     {
         String branchid = request.getParameter("branchid");
         String branchname = request.getParameter("branchname");
@@ -75,10 +74,10 @@ public class BranchServlet extends HttpServlet
         response.sendRedirect("Admin/Branch/adminViewBranch.jsp");
     }
 
+    /*################################( UPDATE BRANCH )#####################################*/
 
-    /*######################################################( UPDATE )#############################################################*/
-
-    private void updateBranch(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException
+    private void updateBranch(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException, ServletException
     {
         HttpSession session = request.getSession();
         String branchid = request.getParameter("branchid");
@@ -86,6 +85,7 @@ public class BranchServlet extends HttpServlet
         String branchaddress = request.getParameter("branchaddress");
         String branchphone = request.getParameter("branchphone");
         int numofworker = Integer.parseInt(request.getParameter("numofworker"));
+
         branch br = new branch();
 
         br.setBranchID(branchid);
@@ -101,9 +101,10 @@ public class BranchServlet extends HttpServlet
         response.sendRedirect("Admin/Branch/adminViewBranchDetail.jsp");
     }
 
-    /*######################################################( VIEW )#############################################################*/
+    /*################################( VIEW BRANCH )#####################################*/
 
-    private void viewBranch(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException
+    private void viewBranch(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException, ServletException
     {
         HttpSession session = request.getSession();
         String branchid = request.getParameter("branchid");
@@ -111,6 +112,7 @@ public class BranchServlet extends HttpServlet
         String branchaddress = request.getParameter("branchaddress");
         String branchphone = request.getParameter("branchphone");
         int numofworker = Integer.parseInt(request.getParameter("numofworker"));
+
         branch br = new branch();
 
         br.setBranchID(branchid);
@@ -123,9 +125,10 @@ public class BranchServlet extends HttpServlet
         response.sendRedirect("Admin/Branch/adminViewBranchDetail.jsp");
     }
 
-    /*######################################################( DELETE )#############################################################*/
+    /*################################( DELETE BRANCH )#####################################*/
 
-    private void deleteBranch(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException
+    private void deleteBranch(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException
     {
         String branchid = request.getParameter("branchid");
         bd.deleteBranch(branchid);

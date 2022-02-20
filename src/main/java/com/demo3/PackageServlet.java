@@ -17,10 +17,12 @@ public class PackageServlet extends HttpServlet
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {}
+    protected void doGet(HttpServletRequest request,
+    HttpServletResponse response) throws ServletException, IOException {}
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    protected void doPost(HttpServletRequest request,
+    HttpServletResponse response) throws ServletException, IOException
     {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
@@ -43,16 +45,16 @@ public class PackageServlet extends HttpServlet
                     updatePackage(request, response);
                     break;
                 default:
-                    /*listUser(request, response);*/
                     break;
             }
         }
         catch (SQLException ex) {throw new ServletException(ex);}
     }
 
-    /*######################################################( SINGNUP )#############################################################*/
+    /*################################( ADD PACKAGE )#####################################*/
 
-    private void addPackage(HttpServletRequest request,HttpServletResponse response) throws SQLException, IOException
+    private void addPackage(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException
     {
         String packageid = request.getParameter("packageid");
         String packagename = request.getParameter("packagename");
@@ -68,9 +70,10 @@ public class PackageServlet extends HttpServlet
     }
 
 
-    /*######################################################( UPDATE )#############################################################*/
+    /*################################( UPDATE PACKAGE )#####################################*/
 
-    private void updatePackage(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException
+    private void updatePackage(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException, ServletException
     {
         HttpSession session = request.getSession();
         String packageid = request.getParameter("packageid");
@@ -89,9 +92,10 @@ public class PackageServlet extends HttpServlet
         response.sendRedirect("Admin/Package/adminViewPackageDetail.jsp");
     }
 
-    /*######################################################( VIEW )#############################################################*/
+    /*################################( VIEW PACKAGE )#####################################*/
 
-    private void viewPackage(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException
+    private void viewPackage(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException, ServletException
     {
         HttpSession session = request.getSession();
         String packageid = request.getParameter("packageid");
@@ -107,9 +111,10 @@ public class PackageServlet extends HttpServlet
         response.sendRedirect("Admin/Package/adminViewPackageDetail.jsp");
     }
 
-    /*######################################################( DELETE )#############################################################*/
+    /*################################( DELETE PACKAGE )#####################################*/
 
-    private void deletePackage(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException
+    private void deletePackage(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException
     {
         String packageid = request.getParameter("packageid");
         pd.deletePackage(packageid);

@@ -56,7 +56,6 @@
     color: white;
     font-family: 'Kaushan Script', cursive;
     font-family: 'Merienda', cursive;
-    margin-top: 150px;
 }
 .txt{
     color: deepskyblue;
@@ -64,13 +63,11 @@
     font-size: 70px;
     font-weight: bold;
     text-transform: uppercase;
-    margin-top: 20px;
-    margin-left: 500px;
+    text-align: center;
 }
 .neon-wrapper{
     display: inline-flex;
-    margin-left: 0;
-    margin-right: 0;
+    text-align: center;
 }
 .txt::before{
     content: "N'Barbershop";
@@ -79,12 +76,12 @@
     filter: blur(2px);
     margin-left: 0;
     margin-right: 0;
+    text-align: center;
 }
 .neon-wrapper{
     display: inline-flex;
     filter: brightness(150%);
-    margin-left: 0;
-    margin-right: 0;
+    text-align: center;
 }
 .booking-system h3{
     font-size: 35px;

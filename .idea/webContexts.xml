@@ -9,6 +9,7 @@
         <entry key="file://$PROJECT_DIR$/src/main/webapp/Customer/Home/custHome.jsp" value="file://$PROJECT_DIR$/src/main/webapp/Customer/Home" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/Customer/Profile/custEditProfile.jsp" value="file://$PROJECT_DIR$/src/main/webapp/Customer/Profile" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/Customer/Profile/custViewProfile.jsp" value="file://$PROJECT_DIR$/src/main/webapp/Customer/Profile" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/about.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
       </map>
     </option>
   </component>

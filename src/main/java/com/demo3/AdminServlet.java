@@ -15,11 +15,11 @@ public class AdminServlet extends HttpServlet {
         ad = new AdminDao();
     }
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {}
+    protected void doGet(HttpServletRequest request,
+    HttpServletResponse response) throws ServletException, IOException {}
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    protected void doPost(HttpServletRequest request,
+    HttpServletResponse response) throws ServletException, IOException
     {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
@@ -32,24 +32,20 @@ public class AdminServlet extends HttpServlet {
                 case "login":
                     login(request, response);
                     break;
-                case "/edit":
-                    /*showEditForm(request, response);*/
-                    break;
                 case "update":
                     updateAdmin(request, response);
                     break;
                 default:
-                    /*listUser(request, response);*/
                     break;
             }
         }
         catch (SQLException ex) {throw new ServletException(ex);}
     }
 
+    /*################################( LOGIN )#####################################*/
 
-    /*######################################################( LOGIN )#############################################################*/
-
-    private void login(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException
+    private void login(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException
     {
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
@@ -59,10 +55,10 @@ public class AdminServlet extends HttpServlet {
 
         try
         {
-            Class.forName("org.postgresql.Driver"); // ni stay
-            String dbURL = "jdbc:postgresql://ec2-50-19-32-96.compute-1.amazonaws.com:5432/d65mb698aandvt"; //ni url dri heroku database
-            String user = "ffkacpfvbcmcwa"; //ni user dri heroku database
-            String pass = "3939ef811721250f3db1595eb911cfcbac4e294a582158f13f9ef08dc63786bf"; //ni password dri heroku database
+            Class.forName("org.postgresql.Driver");
+            String dbURL = "jdbc:postgresql://ec2-50-19-32-96.compute-1.amazonaws.com:5432/d65mb698aandvt";
+            String user = "ffkacpfvbcmcwa";
+            String pass = "3939ef811721250f3db1595eb911cfcbac4e294a582158f13f9ef08dc63786bf";
             Connection conn = DriverManager.getConnection(dbURL, user, pass);
 
             String sql  ="SELECT * from admin";
@@ -77,13 +73,13 @@ public class AdminServlet extends HttpServlet {
                 System.out.println("Product Name: " + dm.getDatabaseProductName());
                 System.out.println("Product version: " + dm.getDatabaseProductVersion());
 
-
                 Statement statement = conn.createStatement();
                 ResultSet res = statement.executeQuery(sql);
 
                 while (res.next())
                 {
-                    if(adminusername.equals(res.getString("adminusername")) && adminpass.equals(res.getString("adminpass")))
+                    if(adminusername.equals(res.getString("adminusername")) &&
+                            adminpass.equals(res.getString("adminpass")))
                     {
                         notFound = false;
                         session.setAttribute("adminid",res.getInt(1));
@@ -105,14 +101,13 @@ public class AdminServlet extends HttpServlet {
                 }
             }
         }
-
         catch (Exception e) {e.printStackTrace();}
     }
 
+    /*################################( UPDATE )#####################################*/
 
-    /*######################################################( UPDATE )#############################################################*/
-
-    private void updateAdmin(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException
+    private void updateAdmin(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException, ServletException
     {
         HttpSession session = request.getSession();
         int adminid = Integer.parseInt(request.getParameter("adminid"));
