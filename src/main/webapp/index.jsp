@@ -64,6 +64,7 @@
             </ul>
         </div>
 
+        <br/><br/><br/>
         <center>
             <div class="welcome">
                 <h3>Welcome To...</h3>
@@ -73,8 +74,6 @@
                 <span class="txt">N'Barbershop</span>
             </div>
         </center>
-
-
 
             <div class="booking-system">
                 <h3><%= "Booking System" %></h3>
@@ -87,7 +86,7 @@
             </div>
         </center>
 
-        <br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/>
         <div>
             <button type="button" id="customer" style="width: 200px;
                                     padding: 15px 0;
