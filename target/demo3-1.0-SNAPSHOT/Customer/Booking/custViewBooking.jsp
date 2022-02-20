@@ -127,12 +127,14 @@
                     catch (Exception e) {e.printStackTrace();}
                 %>
         </table>
-    <br><br><br>
-<center>
-    <h1>ACCEPTED BOOKING DETAIL</h1>
-    <div class="rectangle"></div><br><br>
-</center>
 
+    <br><br><br><br/><br><br><br/><br><br><br><br/><br><br><br/><br><br><br/>
+
+
+    <center>
+        <h1>ACCEPTED BOOKING DETAIL</h1>
+        <div class="rectangle"></div><br><br>
+    </center>
 
     <table>
         <tr>
