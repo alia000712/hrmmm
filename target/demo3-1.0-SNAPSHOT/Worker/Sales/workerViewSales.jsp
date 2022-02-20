@@ -15,6 +15,18 @@
         .worker-sales{
             margin-left: 20%;
         }
+        .exit
+        {
+            position: absolute;
+            top: 8px;
+            right: 20px;
+            font-size: 35px;
+        }
+        .exit a
+        {
+            text-decoration: none;
+            color: black;
+        }
         h1{
             font-size: 40px;
             font-family: "Inter", sans-serif;
@@ -29,9 +41,25 @@
         table{
             text-align: center;
             padding: 20px;
+            width: 90%;
         }
         table tr, td{
             padding: 20px;
+        }
+        th{
+            border-bottom: 3px solid white;
+        }
+        button{
+            padding: 10px 20px;
+            color: black;
+            background: transparent;
+            border: 2px solid white;
+            cursor: pointer;
+            border-radius: 50px;
+        }
+        button:hover{
+            color: white;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -40,6 +68,7 @@
 <div class="worker-sales">
     <center>
         <br><br>
+        <div class="exit"><a href="workerSales.jsp">&#9746;</a></div>
         <h1>MANAGE SALES</h1>
         <hr>
         <table>
