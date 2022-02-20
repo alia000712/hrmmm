@@ -96,8 +96,7 @@
                                     border: 2px solid cornflowerblue;
                                     background: transparent;
                                     color: white;
-                                    cursor: pointer;
-                                    margin-left: 450px">
+                                    cursor: pointer;">
                     CUSTOMER</button>
                 <button type="button" id="worker" style="width: 200px;
                                     padding: 15px 0;
