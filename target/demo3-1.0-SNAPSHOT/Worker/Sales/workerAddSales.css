@@ -3,8 +3,9 @@
     color:white;
     margin-left: 33%;
     width: 856px;
-    height: 820px;
+    height: 800px;
     background: linear-gradient(270deg, #82D3B4 0%, #B46CC6 100%);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     overflow: hidden;
     border-radius: 30px;
     font-family: 'ABeeZee';
