@@ -28,6 +28,7 @@
             width: 20%;
             padding: 16px 8px;
             border: none;
+            cursor: pointer;
         }
         .rectangle
         {
