@@ -64,15 +64,16 @@
             </ul>
         </div>
 
+        <br/><br/><br/><br/>
         <center>
             <div class="welcome">
                 <h3>Welcome To...</h3>
             </div>
-        </center>
 
             <div class="neon-wrapper">
                 <span class="txt">N'Barbershop</span>
             </div>
+        </center>
 
             <div class="booking-system">
                 <h3><%= "Booking System" %></h3>
@@ -83,34 +84,10 @@
             <div id="parent">Life is short. Make each hair flip fabulous!
                 <div id="border"></div>
             </div>
-        </center>
 
-        <br/><br/><br/><br/>
-        <div>
-            <button type="button" id="customer" style="width: 200px;
-                                    padding: 15px 0;
-                                    text-align: center;
-                                    margin: 20px 10px;
-                                    border-radius: 25px;
-                                    font-weight: bold;
-                                    border: 2px solid cornflowerblue;
-                                    background: transparent;
-                                    color: white;
-                                    cursor: pointer;
-                                    margin-left: 450px">
-            CUSTOMER</button>
-            <button type="button" id="worker" style="width: 200px;
-                                    padding: 15px 0;
-                                    text-align: center;
-                                    margin: 20px 10px;
-                                    border-radius: 25px;
-                                    font-weight: bold;
-                                    border: 2px solid cornflowerblue;
-                                    background: transparent;
-                                    color: white;
-                                    cursor: pointer;" >
-            WORKER</button>
-            <button type="button" id="admin" style="width: 200px;
+            <br/><br/><br/>
+            <div>
+                <button type="button" id="customer" style="width: 200px;
                                     padding: 15px 0;
                                     text-align: center;
                                     margin: 20px 10px;
@@ -120,8 +97,31 @@
                                     background: transparent;
                                     color: white;
                                     cursor: pointer;">
-            ADMIN</button>
-        </div>
+                    CUSTOMER</button>
+                <button type="button" id="worker" style="width: 200px;
+                                    padding: 15px 0;
+                                    text-align: center;
+                                    margin: 20px 10px;
+                                    border-radius: 25px;
+                                    font-weight: bold;
+                                    border: 2px solid cornflowerblue;
+                                    background: transparent;
+                                    color: white;
+                                    cursor: pointer;" >
+                    WORKER</button>
+                <button type="button" id="admin" style="width: 200px;
+                                    padding: 15px 0;
+                                    text-align: center;
+                                    margin: 20px 10px;
+                                    border-radius: 25px;
+                                    font-weight: bold;
+                                    border: 2px solid cornflowerblue;
+                                    background: transparent;
+                                    color: white;
+                                    cursor: pointer;">
+                    ADMIN</button>
+            </div>
+        </center>
 
         <center>
             <div class="copyright">

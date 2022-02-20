@@ -25,7 +25,7 @@
             width: 50%;
             height: 90%;
             background: white;
-            top: 45%;
+            top: 50%;
             left: 50%;
             border-radius: 30px;
             position: absolute;
