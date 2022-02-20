@@ -29,7 +29,10 @@
         table th{
             border-bottom: 3px solid white;
         }
-
+        button a{
+            text-decoration: none;
+            color: black;
+        }
     </style>
 </head>
 <body>
@@ -128,7 +131,7 @@
                 %>
         </table>
 
-    <br><br><br><br/><br><br><br/><br><br><br><br/><br><br><br/><br><br><br/>
+    <br><br><br><br/><br><br><br/><br><br><br><br/><br><br><br/><br><br><br/><br/>
 
 
     <center>
@@ -145,7 +148,7 @@
             <th>PACKAGE PRICE</th>
             <th>BRANCH ID</th>
             <th>WORKER ID</th>
-            <th>ACTION</th>
+            <th colspan="2">ACTION</th>
         </tr>
         <%
             try
@@ -195,6 +198,7 @@
                 <input type="hidden" name="action" value="deletecust">
                 <input type="hidden" name="bookingid" value="<%=res.getInt("bookingid")%>">
                 <td><button type="submit" name="submit" onclick="form.action='../../BookingServlet'">DELETE</button></td>
+                <td><button><a href="custBookingPrint.jsp">VIEW</a></button></td>
             </form>
         </tr>
         <%
