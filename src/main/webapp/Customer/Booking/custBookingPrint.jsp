@@ -13,7 +13,7 @@
         .container{
             border: 5px solid black;
             width: 80%;
-            height: 100%;
+            height: 120%;
         }
         h2{
             font-size: 25px;
