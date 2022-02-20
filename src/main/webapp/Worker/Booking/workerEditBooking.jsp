@@ -10,6 +10,29 @@
 <head>
     <title>Booking</title>
     <link rel="stylesheet" href="workerEditBooking.css">
+    <style>
+        .container-bg{
+            background: transparent;
+            border-radius: 10px;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            overflow: hidden;
+            width: 80%;
+            height: 77%;
+            max-width: 100%;
+            min-height: 60%;
+            position: relative;
+        }
+        button:hover{
+            color: black;
+        }
+        button a{
+            color: white;
+            text-decoration: none;
+        }
+        button a:hover{
+            color: black;
+        }
+    </style>
 </head>
 <body>
 <%@include file="../../menuHtml/menuWorkerBooking.html"%>
@@ -18,6 +41,7 @@
     <h1>BOOKING DETAILS</h1>
     <hr><br>
     <center>
+        <div class="container-bg">
         <table>
             <tr>
                 <td>
@@ -67,14 +91,14 @@
                     : <input type="text"  name="packageid" value="${bk.packageID}" readonly>
                 </td>
             </tr>
-
-
         </table>
-        <br><br><br>
+
+        <br><br>
         <input type="hidden" name="workerid" value="${wk.workerID}">
         <input type="hidden" name="action" value="updateworker">
         <button type="submit" name="submit" onclick="form.action='../../BookingServlet'">ACCEPT</button>
         <button><a href="workerViewBooking.jsp">CANCEL</a></button>
+        </div>
     </center>
 
 </form>

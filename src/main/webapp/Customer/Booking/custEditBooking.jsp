@@ -20,6 +20,17 @@
             text-decoration: none;
             color: white;
         }
+        .container-bg{
+            background: transparent;
+            border-radius: 10px;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            overflow: hidden;
+            width: 80%;
+            height: 70%;
+            max-width: 100%;
+            min-height: 60%;
+            position: relative;
+        }
     </style>
 </head>
 <body>
@@ -29,8 +40,10 @@
     <br/><br/>
     <h1>BOOKING DETAILS</h1>
     <hr><br>
+
     <center>
-        <table>
+        <div class="container-bg">
+        <table><br/><br/>
             <tr>
                 <td>
                     Booking Date
@@ -140,7 +153,9 @@
         <input type="hidden" name="action" value="updatecust">
         <button type="submit" name="submit" onclick="form.action='../../BookingServlet'">UPDATE</button>
         <button><a href="custViewBooking.jsp">CANCEL</a></button>
+        </div>
     </center>
+
 
 </form>
 </body>

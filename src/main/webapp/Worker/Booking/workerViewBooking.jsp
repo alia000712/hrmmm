@@ -42,19 +42,20 @@
         table tr, td{
             padding-top: 10px;
             padding-bottom: 10px;
+            text-align: center;
         }
         button{
             box-sizing: border-box;
-            padding-left: 4%;
-            padding-right: 4%;
-            padding-top: 2%;
-            padding-bottom: 2%;
+            padding: 7px 15px;
             box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.25);
             background-color: transparent;
             overflow: hidden;
             border-radius: 50px;
             border: 3px solid white;
             cursor: pointer;
+        }
+        button:hover{
+            color: white;
         }
     </style>
 </head>
@@ -75,7 +76,7 @@
                 <th>PACKAGE ID</th>
                 <th>BOOKING DATE</th>
                 <th>BOOKING TIME</th>
-                <th>ACTION</th>
+                <th colspan="2">ACTION</th>
             </tr>
             <%
                 try
@@ -150,7 +151,8 @@
             %>
         </table>
 
-        <br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
         <center>
             <h2>ACCEPTED BOOKING</h2>
             <hr><br/><br/>
@@ -226,6 +228,6 @@
             %>
         </table>
     </div>
-
+    <br/><br/><br/><br/>
 </body>
 </html>
