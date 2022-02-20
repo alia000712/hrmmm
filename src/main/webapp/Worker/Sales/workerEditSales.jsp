@@ -29,9 +29,9 @@
             <input type="hidden" name="workerid" value="${wk.workerID}">
             <input type="text" name="salesid" placeholder="Sales ID" value="${sl.salesID}" readonly><br><br>
             <input type="date" name="salesdate" placeholder="Sales Date" value="${sl.salesDate}"><br><br>
-            <input type="text" name="salesamount" placeholder="Sales Amount" value="RM ${sl.salesAmount}" readonly><br><br>
-            <input type="text" name="saleswalkin" placeholder="Walkin Sales" value="RM ${sl.salesWalkin}"><br><br>
-            <input type="text" name="salesbooking" placeholder="Booking Sales" value="RM ${sl.salesBooking}"><br><br>
+            <input type="text" name="salesamount" placeholder="Sales Amount" value="${sl.salesAmount}" readonly><br><br>
+            <input type="text" name="saleswalkin" placeholder="Walkin Sales" value="${sl.salesWalkin}"><br><br>
+            <input type="text" name="salesbooking" placeholder="Booking Sales" value="${sl.salesBooking}"><br><br>
             <input type="hidden" name="branchid" value="${wk.branchID}">
             </select><br><br>
             <input type="hidden" name="action" value="updatesalesworker">

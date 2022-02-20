@@ -137,10 +137,10 @@
 
                 <form action="" method="post">
                     <input type="hidden" name="salesid" value="<%=res.getInt("salesid")%>">
-                    <input type="hidden" name="salesamount" value="RM <%=res.getDouble("salesamount")%>">
+                    <input type="hidden" name="salesamount" value="<%=res.getDouble("salesamount")%>">
                     <input type="hidden" name="salesdate" value="<%=res.getDate("salesdate")%>">
-                    <input type="hidden" name="saleswalkin" value="RM <%=res.getDouble("saleswalkin")%>">
-                    <input type="hidden" name="salesbooking" value="RM <%=res.getDouble("salesbooking")%>">
+                    <input type="hidden" name="saleswalkin" value="<%=res.getDouble("saleswalkin")%>">
+                    <input type="hidden" name="salesbooking" value="<%=res.getDouble("salesbooking")%>">
                     <input type="hidden" name="branchid" value="<%=res.getString("branchid")%>">
                     <input type="hidden" name="branchname" value="<%=res.getString("branchname")%>">
                     <input type="hidden" name="adminid" value="<%=res.getInt("adminid")%>">
