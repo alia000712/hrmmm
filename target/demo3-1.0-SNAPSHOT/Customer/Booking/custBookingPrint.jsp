@@ -73,7 +73,7 @@
             </tr>
             <tr>
                 <td style="text-align: right">Booking ID</td>
-                <td style="text-align: left">: <input type="text" value="${bk.bookingID}" readonly></td>
+                <td style="text-align: left">: <input type="text" name="bookingid" value="${bk.bookingID}" readonly></td>
             </tr>
             <tr>
                 <td style="text-align: right">Booking ID</td>

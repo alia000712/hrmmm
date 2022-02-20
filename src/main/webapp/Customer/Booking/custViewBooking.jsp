@@ -198,7 +198,20 @@
                 <input type="hidden" name="action" value="deletecust">
                 <input type="hidden" name="bookingid" value="<%=res.getInt("bookingid")%>">
                 <td><button type="submit" name="submit" onclick="form.action='../../BookingServlet'">DELETE</button></td>
-                <td><button><a href="custBookingPrint.jsp">VIEW</a></button></td>
+            </form>
+            <form action="" method="post">
+                <input type="hidden" name="action" value="printcust">
+                <input type="hidden" name="bookingid" value="<%=res.getInt("bookingid")%>">
+                <input type="hidden" name="bookingdate" value="<%=res.getDate("bookingdate")%>">
+                <input type="hidden" name="bookingtime" value="<%=res.getString("bookingtime")%>">
+                <input type="hidden" name="packageid" value="<%=res.getString("packageid")%>">
+                <input type="hidden" name="packageprice" value="<%=res.getString("packageprice")%>">
+                <input type="hidden" name="packagename" value="<%=res.getString("packagename")%>">
+                <input type="hidden" name="branchid" value="<%=res.getString("branchid")%>">
+                <input type="hidden" name="branchname" value="<%=res.getString("branchname")%>">
+                <input type="hidden" name="workerid" value="<%=res.getInt("workerid")%>">
+                <input type="hidden" name="custid" value="<%=res.getInt("custid")%>">
+                <td><button type="submit" name="submit" onclick="form.action='../../BookingServlet'">VIEW</button></td>
             </form>
         </tr>
         <%

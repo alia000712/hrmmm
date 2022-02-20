@@ -51,6 +51,9 @@ public class BookingServlet extends HttpServlet
                 case "updateworker":
                     updateBookingWorker(request, response);
                     break;
+                case "printcust":
+                    printBooking(request, response);
+                    break;
                 default:
                     break;
             }
@@ -204,6 +207,42 @@ public class BookingServlet extends HttpServlet
         session.setAttribute("br",br);
         session.setAttribute("pk",pk);
         response.sendRedirect("Worker/Booking/workerEditBooking.jsp");
+    }
+
+    private void printBooking(HttpServletRequest request,
+    HttpServletResponse response) throws SQLException, IOException, ServletException
+    {
+        HttpSession session = request.getSession();
+        String branchid = request.getParameter("branchid");
+        Date bookingdate = Date.valueOf(request.getParameter("bookingdate"));
+        String bookingtime =request.getParameter("bookingtime");
+        int custid = Integer.parseInt(request.getParameter("custid"));
+        String packageid = request.getParameter("packageid");
+        double packageprice = Double.parseDouble(request.getParameter("packageprice"));
+        String packagename = request.getParameter("packagename");
+        int bookingid = Integer.parseInt(request.getParameter("bookingid"));
+        int workerid = Integer.parseInt(request.getParameter("workerid"));
+        String branchname = request.getParameter("branchname");
+
+        booking bk = new booking();
+        branch br = new branch();
+        Package pk = new Package();
+
+        bk.setBranchID(branchid);
+        bk.setBookingDate(bookingdate);
+        bk.setBookingTime(bookingtime);
+        bk.setCustID(custid);
+        bk.setPackageID(packageid);
+        bk.setBookingID(bookingid);
+        bk.setWorkerID(workerid);
+        br.setBranchName(branchname);
+        pk.setPackageName(packagename);
+        pk.setPackagePrice(packageprice);
+
+        session.setAttribute("bk",bk);
+        session.setAttribute("br",br);
+        session.setAttribute("pk",pk);
+        response.sendRedirect("Customer/Booking/custBookingPrint.jsp");
     }
 
     /*################################( DELETE BOOKING )#####################################*/

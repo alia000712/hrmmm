@@ -24,7 +24,7 @@
                     <input type="text" name="custname" placeholder="Name" required/>
                     <input type="text" name="custusername" placeholder="Username" required/>
                     <input type="email" name="custemail" placeholder="Email" required/>
-                    <input type="password" name="custpass" placeholder="Password" required/>
+                    <input type="password" name="custpass" placeholder="Password" pattern=".{8,}" title="Eight or more characters" required/>
                     <input type="number" name="custphone" placeholder="Phone" required/>
                     <input type="text" name="custaddress" placeholder="Address" required/>
                     <input type="hidden" name="action" value="signup">
