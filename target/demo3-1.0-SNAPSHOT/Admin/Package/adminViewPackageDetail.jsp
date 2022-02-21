@@ -12,6 +12,27 @@
     <title>Package</title>
     <link href='https://fonts.googleapis.com/css?family=ABeeZee' rel='stylesheet'>
     <link rel="stylesheet" href="adminViewPackageDetail.css">
+    <style>
+        button{
+            padding: 10px 20px;
+            border-radius: 50px;
+            border :3px solid white;
+            color: white;
+            background: transparent;
+            cursor: pointer;
+        }
+        button:hover{
+            color: mediumpurple;
+            background: white;
+        }
+        button a{
+            text-decoration: none;
+            color: white;
+        }
+        button a:hover{
+            color: mediumpurple;
+        }
+    </style>
 </head>
 <body>
 <%@include file="../../menuHtml/menuAdminPackage.html"%>
@@ -33,7 +54,7 @@
                 <input type="hidden" name="packageprice" value="${pk.packagePrice}">
                 <div>
                     <button type="submit"  name="submit" ><a href="adminEditPackage.jsp">EDIT</a></button>
-                </div>
+                </div><br/>
                 <div>
                     <input type="hidden" name="action" value="delete">
                     <button type="submit" name="submit" onclick="form.action='../../PackageServlet'">DELETE</button>
