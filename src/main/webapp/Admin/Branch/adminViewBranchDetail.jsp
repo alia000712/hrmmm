@@ -22,10 +22,18 @@
             border :3px solid white;
             color: white;
             background: transparent;
+            cursor: pointer;
         }
         button:hover{
             color: mediumpurple;
             background: white;
+        }
+        button a{
+            text-decoration: none;
+            color: white;
+        }
+        button a:hover{
+            color: mediumpurple;
         }
     </style>
 </head>

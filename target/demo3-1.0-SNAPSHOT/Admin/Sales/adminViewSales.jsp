@@ -29,9 +29,13 @@
         table{
             text-align: center;
             padding: 20px;
+            width: 90%;
         }
         table tr, td{
             padding: 20px;
+        }
+        th{
+            border-bottom: 3px solid white;
         }
     </style>
 </head>

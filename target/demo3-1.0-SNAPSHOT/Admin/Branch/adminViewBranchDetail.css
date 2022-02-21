@@ -3,7 +3,7 @@
 color:white;
 margin-left: 33%;
 width: 856px;
-height: 720px;
+height: 750px;
 background: linear-gradient(90deg, #4a8bb0 0%, hsl(315, 60%, 46%) 100%);
 overflow-y: auto;
 border-radius: 30px;
@@ -22,7 +22,7 @@ background-color: white;
 {
 box-sizing: border-box;
 width: 600px;
-height: 400px;
+height: 450px;
 display: flex;
 flex-direction: column;
 justify-content: flex-start;

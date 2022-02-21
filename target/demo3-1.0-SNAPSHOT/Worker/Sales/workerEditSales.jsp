@@ -21,9 +21,9 @@
     <div class="editsales">
         <center>
             <br>
-            <div class="exit"><a href="workerSales.jsp">&#9746;</a></div>
+            <div class="exit"><a href="workerViewSales.jsp">&#9746;</a></div>
             <img src="../../image/logo.png" style="width:150px; height:150px" >
-            <h1>ADD SALES</h1>
+            <h1>EDIT SALES</h1>
             <div class="rectangle"></div><br>
             <input type="hidden" name="adminid" value="${sl.adminID}">
             <input type="hidden" name="workerid" value="${wk.workerID}">

@@ -120,7 +120,7 @@
             </table><br/><br/>
             <input type="hidden" name="action" value="update">
             <button type="submit" class="btn-edit" name="submit" onclick="form.action='../../AdminServlet'" >UPDATE</button>
-            <button><a href="custViewProfile.jsp">CANCEL</a></button>
+            <button><a href="adminViewProfile.jsp">CANCEL</a></button>
         </form>
 
     </center>

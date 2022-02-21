@@ -22,7 +22,7 @@
             <br>
             <div class="exit"><a href="adminSales.jsp">&#9746;</a></div>
             <img src="../../image/logo.png" style="width:150px; height:150px" >
-            <h1>ADD SALES</h1>
+            <h1>EDIT SALES</h1>
             <div class="rectangle"></div><br>
             <input type="hidden" name="adminid" value="${adm.adminID}">
             <input type="hidden" name="workerid" value="${sl.workerID}">
