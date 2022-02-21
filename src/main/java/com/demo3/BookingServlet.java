@@ -5,8 +5,8 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDate;
 
 @WebServlet(name = "BookingServlet", value = "/BookingServlet")
 public class BookingServlet extends HttpServlet
@@ -69,21 +69,71 @@ public class BookingServlet extends HttpServlet
     private void addBooking(HttpServletRequest request,
     HttpServletResponse response) throws SQLException, IOException
     {
+        PrintWriter out = response.getWriter();
         String branchid = request.getParameter("branchid");
+        LocalDate bookingdate2 = LocalDate.parse(request.getParameter("bookingdate"));
         Date bookingdate = Date.valueOf(request.getParameter("bookingdate"));
         String bookingtime =request.getParameter("bookingtime");
         int custid = Integer.parseInt(request.getParameter("custid"));
         String packageid = request.getParameter("packageid");
         booking bk = new booking();
 
-        bk.setBranchID(branchid);
-        bk.setBookingDate(bookingdate);
-        bk.setBookingTime(bookingtime);
-        bk.setCustID(custid);
-        bk.setPackageID(packageid);
+        try
+        {
+            Class.forName("org.postgresql.Driver");
+            String dbURL = "jdbc:postgresql://ec2-50-19-32-96.compute-1.amazonaws.com:5432/d65mb698aandvt"; //ni url dri heroku database
+            String user = "ffkacpfvbcmcwa";
+            String pass = "3939ef811721250f3db1595eb911cfcbac4e294a582158f13f9ef08dc63786bf"; //ni password dri heroku database
+            Connection conn = DriverManager.getConnection(dbURL, user, pass);
 
-        bkd.addBooking(bk);
-        response.sendRedirect("Customer/Booking/custViewBooking.jsp");
+            if (conn != null)
+            {
+                DatabaseMetaData dm = conn.getMetaData();
+                System.out.println("Driver name: " + dm.getDriverName());
+                System.out.println("Driver version: " + dm.getDriverVersion());
+                System.out.println("Product Name: " + dm.getDatabaseProductName());
+                System.out.println("Product version: " + dm.getDatabaseProductVersion());
+
+                String sql  ="select branchid,count(bookingdate),bookingdate from booking " +
+                        "group by bookingdate,branchid having count(bookingdate)>=8;";
+
+                Statement statement = conn.createStatement();
+                ResultSet res = statement.executeQuery(sql);
+
+                if(bookingdate2.compareTo(java.time.LocalDate.now())>=2)
+                {
+                    while(res.next())
+                    {
+                        if(bookingdate.equals(res.getDate("bookingdate")) &&
+                                branchid.equals(res.getString("branchid")))
+                        {
+                            out.println("<script>alert('Booking already full at chosen date and chosen branch.Please choose another date or another branch');</script>");
+                            out.println("<script>window.location.href='Customer/Booking/custAddBooking.jsp'</script>");
+                        }
+                        else
+                        {
+                            bk.setBranchID(branchid);
+                            bk.setBookingDate(bookingdate);
+                            bk.setBookingTime(bookingtime);
+                            bk.setCustID(custid);
+                            bk.setPackageID(packageid);
+
+                            bkd.addBooking(bk);
+                            response.sendRedirect("Customer/Booking/custViewBooking.jsp");
+                        }
+                    }
+                }
+                else
+                {
+                    out.println("<script>alert('Please select at least two days early from current date to make a booking.');</script>");
+                    out.println("<script>window.location.href='Customer/Booking/custAddBooking.jsp'</script>");
+                }
+
+
+            }
+        }
+        catch (Exception e) {e.printStackTrace();}
+
     }
 
     /*################################( UPDATE BOOKING )#####################################*/

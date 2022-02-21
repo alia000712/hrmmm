@@ -26,7 +26,7 @@ public class SalesDao
     public void addSalesAdmin(sales sl) throws SQLException
     {
         try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("insert into sales (salesamount,salesdate,saleswalkin,salesbooking,branchid,adminid) values(?,?,?,?,?,?)");)
+             PreparedStatement preparedStatement = connection.prepareStatement("insert into sales (salesamount,salesdate,saleswalkin,salesbooking,branchid,adminid,workerid) values(?,?,?,?,?,?,null)");)
         {
             preparedStatement.setDouble(1, sl.getSalesAmount());
             preparedStatement.setDate(2, sl.getSalesDate());

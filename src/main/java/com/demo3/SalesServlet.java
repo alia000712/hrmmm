@@ -1,12 +1,15 @@
 package com.demo3;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDate;
 
 @WebServlet(name = "SalesServlet", value = "/SalesServlet")
 public class SalesServlet extends HttpServlet {
@@ -62,24 +65,67 @@ public class SalesServlet extends HttpServlet {
     private void addSalesAdmin(HttpServletRequest request,
     HttpServletResponse response) throws SQLException, IOException
     {
+        PrintWriter out = response.getWriter();
+        int adminid = Integer.parseInt(request.getParameter("adminid"));
+        LocalDate bookingdate = LocalDate.parse(request.getParameter("salesdate"));
         Date salesdate = Date.valueOf(request.getParameter("salesdate"));
         double saleswalkin = Double.parseDouble(request.getParameter("saleswalkin"));
-        double salesbooking = Double.parseDouble(request.getParameter("salesbooking"));
         String branchid = request.getParameter("branchid");
-        int adminid = Integer.parseInt(request.getParameter("adminid"));
-        double salesamount = saleswalkin+salesbooking;
 
-        sales sl = new sales();
+        try
+        {
+            Class.forName("org.postgresql.Driver");
+            String dbURL = "jdbc:postgresql://ec2-50-19-32-96.compute-1.amazonaws.com:5432/d65mb698aandvt"; //ni url dri heroku database
+            String user = "ffkacpfvbcmcwa";
+            String pass = "3939ef811721250f3db1595eb911cfcbac4e294a582158f13f9ef08dc63786bf"; //ni password dri heroku database
+            Connection conn = DriverManager.getConnection(dbURL, user, pass);
 
-        sl.setSalesDate(salesdate);
-        sl.setSalesWalkin(saleswalkin);
-        sl.setSalesBooking(salesbooking);
-        sl.setBranchID(branchid);
-        sl.setSalesAmount(salesamount);
-        sl.setAdminID(adminid);
-        sd.addSalesAdmin(sl);
+            if (conn != null)
+            {
+                DatabaseMetaData dm = conn.getMetaData();
+                System.out.println("Driver name: " + dm.getDriverName());
+                System.out.println("Driver version: " + dm.getDriverVersion());
+                System.out.println("Product Name: " + dm.getDatabaseProductName());
+                System.out.println("Product version: " + dm.getDatabaseProductVersion());
 
-        response.sendRedirect("Admin/Sales/adminViewSales.jsp");
+                String sql  ="select b.bookingdate,b.branchid, sum(pk.packageprice) as packageprice " +
+                        "from booking b join package pk on (b.packageid=pk.packageid) " +
+                        "where b.workerid is not null " +
+                        "group by b.bookingdate,b.branchid " +
+                        "order by b.bookingdate;";
+
+                Statement statement = conn.createStatement();
+                ResultSet res = statement.executeQuery(sql);
+
+                while(res.next())
+                {
+                    if(bookingdate.equals(LocalDate.parse(res.getString("bookingdate"))) &&
+                            branchid.equals(res.getString("branchid")))
+                    {
+                        double salesbooking = res.getDouble("packageprice");
+                        double salesamount = saleswalkin+salesbooking;
+
+                        sales sl = new sales();
+
+                        sl.setSalesDate(salesdate);
+                        sl.setSalesWalkin(saleswalkin);
+                        sl.setSalesBooking(salesbooking);
+                        sl.setBranchID(branchid);
+                        sl.setSalesAmount(salesamount);
+                        sl.setAdminID(adminid);
+                        sd.addSalesAdmin(sl);
+
+                        response.sendRedirect("Admin/Sales/adminViewSales.jsp");
+                    }
+                    else
+                    {
+                        out.println("<script>alert('Cannot  insert sales.');</script>");
+                        out.println("<script>window.location.href='Admin/Sales/adminViewSales.jsp'</script>");
+                    }
+                }
+            }
+        }
+        catch (Exception e) {e.printStackTrace();}
     }
 
     /*################################( ADD SALES )#####################################*/
@@ -87,24 +133,67 @@ public class SalesServlet extends HttpServlet {
     private void addSalesWorker(HttpServletRequest request,
     HttpServletResponse response) throws SQLException, IOException
     {
+        PrintWriter out = response.getWriter();
+        LocalDate bookingdate = LocalDate.parse(request.getParameter("salesdate"));
         Date salesdate = Date.valueOf(request.getParameter("salesdate"));
         double saleswalkin = Double.parseDouble(request.getParameter("saleswalkin"));
-        double salesbooking = Double.parseDouble(request.getParameter("salesbooking"));
         String branchid = request.getParameter("branchid");
         int workerid = Integer.parseInt(request.getParameter("workerid"));
-        double salesamount = saleswalkin+salesbooking;
 
-        sales sl = new sales();
+        try
+        {
+            Class.forName("org.postgresql.Driver");
+            String dbURL = "jdbc:postgresql://ec2-50-19-32-96.compute-1.amazonaws.com:5432/d65mb698aandvt"; //ni url dri heroku database
+            String user = "ffkacpfvbcmcwa";
+            String pass = "3939ef811721250f3db1595eb911cfcbac4e294a582158f13f9ef08dc63786bf"; //ni password dri heroku database
+            Connection conn = DriverManager.getConnection(dbURL, user, pass);
 
-        sl.setSalesDate(salesdate);
-        sl.setSalesWalkin(saleswalkin);
-        sl.setSalesBooking(salesbooking);
-        sl.setBranchID(branchid);
-        sl.setSalesAmount(salesamount);
-        sl.setWorkerID(workerid);
-        sd.addSalesWorker(sl);
+            if (conn != null)
+            {
+                DatabaseMetaData dm = conn.getMetaData();
+                System.out.println("Driver name: " + dm.getDriverName());
+                System.out.println("Driver version: " + dm.getDriverVersion());
+                System.out.println("Product Name: " + dm.getDatabaseProductName());
+                System.out.println("Product version: " + dm.getDatabaseProductVersion());
 
-        response.sendRedirect("Worker/Sales/workerViewSales.jsp");
+                String sql  ="select b.bookingdate,b.branchid, sum(pk.packageprice) as packageprice " +
+                        "from booking b join package pk on (b.packageid=pk.packageid) " +
+                        "where b.workerid is not null " +
+                        "group by b.bookingdate,b.branchid " +
+                        "order by b.bookingdate;";
+
+                Statement statement = conn.createStatement();
+                ResultSet res = statement.executeQuery(sql);
+
+                while(res.next())
+                {
+                    if(bookingdate.equals(LocalDate.parse(res.getString("bookingdate"))) &&
+                            branchid.equals(res.getString("branchid")))
+                    {
+                        double salesbooking = res.getDouble("packageprice");
+                        double salesamount = saleswalkin+salesbooking;
+
+                        sales sl = new sales();
+
+                        sl.setSalesDate(salesdate);
+                        sl.setSalesWalkin(saleswalkin);
+                        sl.setSalesBooking(salesbooking);
+                        sl.setBranchID(branchid);
+                        sl.setSalesAmount(salesamount);
+                        sl.setWorkerID(workerid);
+                        sd.addSalesWorker(sl);
+
+                        response.sendRedirect("Worker/Sales/workerViewSales.jsp");
+                    }
+                    else
+                    {
+                        out.println("<script>alert('Cannot  insert sales.');</script>");
+                        out.println("<script>window.location.href='Worker/Sales/workerViewSales.jsp'</script>");
+                    }
+                }
+            }
+        }
+        catch (Exception e) {e.printStackTrace();}
     }
 
     /*################################( UPDATE SALES )#####################################*/
@@ -112,32 +201,75 @@ public class SalesServlet extends HttpServlet {
     private void updateSalesAdmin(HttpServletRequest request,
     HttpServletResponse response) throws SQLException, IOException, ServletException
     {
+        PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
         int salesid = Integer.parseInt(request.getParameter("salesid"));
+        LocalDate bookingdate = LocalDate.parse(request.getParameter("salesdate"));
         Date salesdate = Date.valueOf(request.getParameter("salesdate"));
         double saleswalkin = Double.parseDouble(request.getParameter("saleswalkin"));
-        double salesbooking = Double.parseDouble(request.getParameter("salesbooking"));
         String branchid = request.getParameter("branchid");
         int adminid = Integer.parseInt(request.getParameter("adminid"));
         int workerid = Integer.parseInt(request.getParameter("workerid"));
-        double salesamount = saleswalkin+salesbooking;
 
-        sales sl = new sales();
+        try
+        {
+            Class.forName("org.postgresql.Driver");
+            String dbURL = "jdbc:postgresql://ec2-50-19-32-96.compute-1.amazonaws.com:5432/d65mb698aandvt"; //ni url dri heroku database
+            String user = "ffkacpfvbcmcwa";
+            String pass = "3939ef811721250f3db1595eb911cfcbac4e294a582158f13f9ef08dc63786bf"; //ni password dri heroku database
+            Connection conn = DriverManager.getConnection(dbURL, user, pass);
 
-        sl.setSalesID(salesid);
-        sl.setSalesDate(salesdate);
-        sl.setSalesWalkin(saleswalkin);
-        sl.setSalesBooking(salesbooking);
-        sl.setBranchID(branchid);
-        sl.setAdminID(adminid);
-        sl.setWorkerID(workerid);
-        sl.setSalesAmount(salesamount);
+            if (conn != null)
+            {
+                DatabaseMetaData dm = conn.getMetaData();
+                System.out.println("Driver name: " + dm.getDriverName());
+                System.out.println("Driver version: " + dm.getDriverVersion());
+                System.out.println("Product Name: " + dm.getDatabaseProductName());
+                System.out.println("Product version: " + dm.getDatabaseProductVersion());
 
-        sd.updateSalesAdmin(sl);
+                String sql  ="select b.bookingdate,b.branchid, sum(pk.packageprice) as packageprice " +
+                        "from booking b join package pk on (b.packageid=pk.packageid) " +
+                        "where b.workerid is not null " +
+                        "group by b.bookingdate,b.branchid " +
+                        "order by b.bookingdate;";
 
-        session.removeAttribute("sl");
-        session.setAttribute("sl",sl);
-        response.sendRedirect("Admin/Sales/adminViewSales.jsp");
+                Statement statement = conn.createStatement();
+                ResultSet res = statement.executeQuery(sql);
+
+                while(res.next())
+                {
+                    if(bookingdate.equals(LocalDate.parse(res.getString("bookingdate"))) &&
+                            branchid.equals(res.getString("branchid")))
+                    {
+                        double salesbooking = res.getDouble("packageprice");
+                        double salesamount = saleswalkin+salesbooking;
+
+                        sales sl = new sales();
+
+                        sl.setSalesID(salesid);
+                        sl.setSalesDate(salesdate);
+                        sl.setSalesWalkin(saleswalkin);
+                        sl.setSalesBooking(salesbooking);
+                        sl.setBranchID(branchid);
+                        sl.setAdminID(adminid);
+                        sl.setWorkerID(workerid);
+                        sl.setSalesAmount(salesamount);
+
+                        sd.updateSalesAdmin(sl);
+
+                        session.removeAttribute("sl");
+                        session.setAttribute("sl",sl);
+                        response.sendRedirect("Admin/Sales/adminViewSales.jsp");
+                    }
+                    else
+                    {
+                        out.println("<script>alert('Cannot update sales.');</script>");
+                        out.println("<script>window.location.href='Admin/Sales/adminViewSales.jsp'</script>");
+                    }
+                }
+            }
+        }
+        catch (Exception e) {e.printStackTrace();}
     }
 
     /*################################( UPDATE SALES )#####################################*/
@@ -145,32 +277,75 @@ public class SalesServlet extends HttpServlet {
     private void updateSalesWorker(HttpServletRequest request,
     HttpServletResponse response) throws SQLException, IOException, ServletException
     {
+        PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
         int salesid = Integer.parseInt(request.getParameter("salesid"));
+        LocalDate bookingdate = LocalDate.parse(request.getParameter("salesdate"));
         Date salesdate = Date.valueOf(request.getParameter("salesdate"));
         double saleswalkin = Double.parseDouble(request.getParameter("saleswalkin"));
-        double salesbooking = Double.parseDouble(request.getParameter("salesbooking"));
         String branchid = request.getParameter("branchid");
         int adminid = Integer.parseInt(request.getParameter("adminid"));
         int workerid = Integer.parseInt(request.getParameter("workerid"));
-        double salesamount = saleswalkin+salesbooking;
 
-        sales sl = new sales();
+        try
+        {
+            Class.forName("org.postgresql.Driver");
+            String dbURL = "jdbc:postgresql://ec2-50-19-32-96.compute-1.amazonaws.com:5432/d65mb698aandvt"; //ni url dri heroku database
+            String user = "ffkacpfvbcmcwa";
+            String pass = "3939ef811721250f3db1595eb911cfcbac4e294a582158f13f9ef08dc63786bf"; //ni password dri heroku database
+            Connection conn = DriverManager.getConnection(dbURL, user, pass);
 
-        sl.setSalesID(salesid);
-        sl.setSalesDate(salesdate);
-        sl.setSalesWalkin(saleswalkin);
-        sl.setSalesBooking(salesbooking);
-        sl.setBranchID(branchid);
-        sl.setAdminID(adminid);
-        sl.setWorkerID(workerid);
-        sl.setSalesAmount(salesamount);
+            if (conn != null)
+            {
+                DatabaseMetaData dm = conn.getMetaData();
+                System.out.println("Driver name: " + dm.getDriverName());
+                System.out.println("Driver version: " + dm.getDriverVersion());
+                System.out.println("Product Name: " + dm.getDatabaseProductName());
+                System.out.println("Product version: " + dm.getDatabaseProductVersion());
 
-        sd.updateSalesWorker(sl);
+                String sql  ="select b.bookingdate,b.branchid, sum(pk.packageprice) as packageprice " +
+                        "from booking b join package pk on (b.packageid=pk.packageid) " +
+                        "where b.workerid is not null " +
+                        "group by b.bookingdate,b.branchid " +
+                        "order by b.bookingdate;";
 
-        session.removeAttribute("sl");
-        session.setAttribute("sl",sl);
-        response.sendRedirect("Worker/Sales/workerViewSales.jsp");
+                Statement statement = conn.createStatement();
+                ResultSet res = statement.executeQuery(sql);
+
+                while(res.next())
+                {
+                    if(bookingdate.equals(LocalDate.parse(res.getString("bookingdate"))) &&
+                            branchid.equals(res.getString("branchid")))
+                    {
+                        double salesbooking = res.getDouble("packageprice");
+                        double salesamount = saleswalkin+salesbooking;
+
+                        sales sl = new sales();
+
+                        sl.setSalesID(salesid);
+                        sl.setSalesDate(salesdate);
+                        sl.setSalesWalkin(saleswalkin);
+                        sl.setSalesBooking(salesbooking);
+                        sl.setBranchID(branchid);
+                        sl.setAdminID(adminid);
+                        sl.setWorkerID(workerid);
+                        sl.setSalesAmount(salesamount);
+
+                        sd.updateSalesWorker(sl);
+
+                        session.removeAttribute("sl");
+                        session.setAttribute("sl",sl);
+                        response.sendRedirect("Worker/Sales/workerViewSales.jsp");
+                    }
+                    else
+                    {
+                        out.println("<script>alert('Cannot update sales.');</script>");
+                        out.println("<script>window.location.href='Worker/Sales/workerViewSales.jsp'</script>");
+                    }
+                }
+            }
+        }
+        catch (Exception e) {e.printStackTrace();}
     }
 
     /*################################( VIEW SALES )#####################################*/

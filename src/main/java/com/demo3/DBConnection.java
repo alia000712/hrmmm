@@ -8,7 +8,7 @@ public class DBConnection {
     {
         Connection con = null;
         String url = "jdbc:postgresql://ec2-3-216-113-109.compute-1.amazonaws.com:5432/d2588ossjegiv9"; //MySQL URL followed by the database name
-        String username = "onjnznphtpvlzb"; //MySQL username
+        String username = "onjnznphtpvlzb";
         String password = "ff8e836fb7a630d275b8e9109cb04b91a5fd0937b959cfa509cc007809d6d1b7"; //MySQL password
         System.out.println("In DBConnection.java class ");
 

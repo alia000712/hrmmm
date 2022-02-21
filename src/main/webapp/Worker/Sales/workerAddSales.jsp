@@ -27,8 +27,7 @@
             <div class="rectangle"></div><br>
             <input type="hidden" name="workerid" value="${wk.workerID}">
             <input type="date" name="salesdate" placeholder="Sales Date"><br><br>
-            <input type="text" name="saleswalkin" placeholder="Walkin Sales"><br><br>
-            <input type="text" name="salesbooking" placeholder="Booking Sales"><br><br><br><br>
+            <input type="text" name="saleswalkin" placeholder="Walkin Sales"><br><br><br><br>
             <input type="hidden" name="branchid" value="${wk.branchID}">
             <input type="hidden" name="action" value="addsalesworker">
             <button type="submit" name="submit" onclick="form.action='../../SalesServlet'">ADD</button>
