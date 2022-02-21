@@ -42,8 +42,11 @@ public class BookingServlet extends HttpServlet
                 case "viewworker":
                     viewBookingWorker(request, response);
                     break;
-                case "delete":
-                    deleteBooking(request, response);
+                case "deletecust":
+                    deleteBookingCust(request, response);
+                    break;
+                case "deleteworker":
+                    deleteBookingWorker(request, response);
                     break;
                 case "updatecust":
                     updateBookingCust(request, response);
@@ -247,11 +250,18 @@ public class BookingServlet extends HttpServlet
 
     /*################################( DELETE BOOKING )#####################################*/
 
-    private void deleteBooking(HttpServletRequest request,
+    private void deleteBookingCust(HttpServletRequest request,
     HttpServletResponse response) throws SQLException, IOException
     {
         int bookingid = Integer.parseInt(request.getParameter("bookingid"));
         bkd.deleteBookingCust(bookingid);
         response.sendRedirect("Customer/Booking/custViewBooking.jsp");
+    }
+    private void deleteBookingWorker(HttpServletRequest request,
+                               HttpServletResponse response) throws SQLException, IOException
+    {
+        int bookingid = Integer.parseInt(request.getParameter("bookingid"));
+        bkd.deleteBookingCust(bookingid);
+        response.sendRedirect("Worker/Booking/workerViewBooking.jsp");
     }
 }

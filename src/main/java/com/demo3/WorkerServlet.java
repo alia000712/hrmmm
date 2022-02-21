@@ -214,8 +214,11 @@ public class WorkerServlet extends HttpServlet
     private void deleteWorker(HttpServletRequest request,
     HttpServletResponse response) throws SQLException, IOException
     {
+        PrintWriter out = response.getWriter();
         int workerid = Integer.parseInt(request.getParameter("workerid"));
         wd.deleteWorker(workerid);
-        response.sendRedirect("Admin/Worker/adminViewWorker.jsp");
+        out.println("<script>alert('Worker have been deleted');</script>");
+        out.println("<script>window.location.href='Admin/Worker/adminViewWorker.jsp'</script>");
+
     }
 }

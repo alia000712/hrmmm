@@ -132,6 +132,8 @@ public class BranchServlet extends HttpServlet
     {
         String branchid = request.getParameter("branchid");
         bd.deleteBranch(branchid);
-        response.sendRedirect("Admin/Branch/adminViewBranch.jsp");
+        PrintWriter out = response.getWriter();
+        out.println("<script>alert('Branch have been deleted');</script>");
+        out.println("<script>window.location.href='Admin/Branch/adminViewBranch.jsp'</script>");
     }
 }
