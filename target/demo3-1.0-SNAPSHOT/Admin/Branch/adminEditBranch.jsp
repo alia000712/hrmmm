@@ -23,7 +23,7 @@
             <br>
             <div class="exit"><a href="adminViewBranch.jsp">&#9746;</a></div>
             <img src="../../image/logo.png" style="width:150px; height:150px" >
-            <h1>NEW BRANCH</h1>
+            <h1>UPDATE BRANCH</h1>
             <div class="rectangle"></div><br>
             <div>
                 <input type="text" name="branchname" placeholder="Branch Name" value="${br.branchName}"><br><br>

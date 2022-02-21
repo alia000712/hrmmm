@@ -30,7 +30,7 @@
             <input type="date" name="salesdate" placeholder="Sales Date" value="${sl.salesDate}"><br><br>
             <input type="text" name="salesamount" placeholder="Sales Amount" value="${sl.salesAmount}" readonly><br><br>
             <input type="text" name="saleswalkin" placeholder="Walkin Sales" value="${sl.salesWalkin}"><br><br>
-            <input type="text" name="salesbooking" placeholder="Booking Sales" value="${sl.salesBooking}"><br><br>
+            <input type="text" name="salesbooking" placeholder="Booking Sales" value="${sl.salesBooking}" readonly><br><br>
 
             <select name="branchid">
                 <option value="${sl.branchID}">${br.branchName}</option>

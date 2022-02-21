@@ -29,8 +29,6 @@
             <input type="hidden" name="adminid" value="${adm.adminID}">
             <input type="date" name="salesdate" placeholder="Sales Date"><br><br>
             <input type="text" name="saleswalkin" placeholder="Walkin Sales"><br><br>
-            <input type="text" name="salesbooking" placeholder="Booking Sales"><br><br>
-
             <select name="branchid">
                 <option value="" disabled selected>--Choose Branch--</option>
 

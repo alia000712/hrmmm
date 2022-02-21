@@ -25,7 +25,7 @@
             <div>
                 <input type="text" name="packagename" placeholder="Package Name"><br><br>
                 <input type="text" name="packageid" placeholder="Package ID"><br><br>
-                <input type="number" name="packageprice" placeholder="Package Price"><br><br>
+                <input type="text" name="packageprice" placeholder="Package Price"><br><br>
                 <input type="hidden" name="action" value="add">
             </div>
             <div>
