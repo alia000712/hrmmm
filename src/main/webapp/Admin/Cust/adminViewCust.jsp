@@ -35,6 +35,9 @@
         table tr, td{
             padding: 20px;
         }
+        th{
+            border-bottom: 3px solid white;
+        }
     </style>
 </head>
 <body>

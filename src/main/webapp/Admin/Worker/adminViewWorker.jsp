@@ -35,6 +35,9 @@
         table tr, td{
             padding: 20px;
         }
+        th{
+            border-bottom: 3px solid white;
+        }
     </style>
 </head>
 <body>
@@ -53,8 +56,7 @@
                 <th>ADDRESS</th>
                 <th>NO IC</th>
                 <th>BRANCH ID</th>
-                <th>ACTION</th>
-                <th>ACTION</th>
+                <th colspan="2">ACTION</th>
             </tr>
             <%
                 try

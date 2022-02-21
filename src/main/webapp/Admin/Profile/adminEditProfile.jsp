@@ -23,7 +23,7 @@
         }
         .container{
             width: 50%;
-            height: 95%;
+            height: 70%;
             background: white;
             top: 50%;
             left: 50%;

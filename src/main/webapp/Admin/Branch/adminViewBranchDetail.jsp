@@ -15,6 +15,19 @@
     <link href='https://fonts.googleapis.com/css?family=ABeeZee' rel='stylesheet'>
     <link rel="stylesheet" href="adminViewBranchDetail.css">
     <title>Branch</title>
+    <style>
+        button{
+            padding: 10px 20px;
+            border-radius: 50px;
+            border :3px solid white;
+            color: white;
+            background: transparent;
+        }
+        button:hover{
+            color: mediumpurple;
+            background: white;
+        }
+    </style>
 </head>
 <body>
 <%@include file="../../menuHtml/menuAdminBranch.html"%>
@@ -40,12 +53,16 @@
                     <input type="hidden" name="branchphone" value="${br.branchPhone}">
                     <input type="hidden" name="numofworker" value="${br.numOfWorker}">
                     <div>
-                        <button type="submit"  name="submit" ><a href="adminEditBranch.jsp">EDIT</a></button>
-                    </div>
+                        <center>
+                            <button type="submit"  name="submit" ><a href="adminEditBranch.jsp">EDIT</a></button>
+                        </center>
+                        </div><br>
                     <div>
-                        <input type="hidden" name="action" value="delete">
-                        <button type="submit" name="submit" onclick="form.action='../../BranchServlet'">DELETE</button>
-                    </div>
+                        <center>
+                            <input type="hidden" name="action" value="delete">
+                            <button type="submit" name="submit" onclick="form.action='../../BranchServlet'">DELETE</button>
+                        </center>
+                        </div>
                 </div>
         </center>
     </div>

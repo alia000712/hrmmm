@@ -24,17 +24,19 @@
         }
         button
         {
-            color: transparent;
-            border: 1px solid black;
+            color: black;
+            border: 3px solid black;
             border-radius: 30px;
             padding: 15px;
             padding-left: 30px;
             padding-right: 30px;
             justify-content: center;
+            background: transparent;
         }
         button:hover
         {
-            background-color: #695466;
+            background-color: white;
+            color: white;
             cursor: pointer;
         }
         button a
@@ -47,7 +49,7 @@
         }
         button a:hover
         {
-            color: #D8A8FA;
+            color: black;
         }
     </style>
 </head>
