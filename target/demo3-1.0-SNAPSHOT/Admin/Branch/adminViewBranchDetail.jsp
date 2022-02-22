@@ -34,6 +34,7 @@
         }
         button a:hover{
             color: mediumpurple;
+            background: white;
         }
     </style>
 </head>
