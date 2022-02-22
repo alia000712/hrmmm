@@ -13,6 +13,12 @@
 <head>
     <title>Sales</title>
     <link rel="stylesheet" href="workerAddSales.css">
+    <style>
+        td{
+            font-size: 25px;
+            color: white;
+        }
+    </style>
 </head>
 <body>
 <%@include file="../../menuHtml/menuWorkerSales.html"%>
@@ -26,8 +32,16 @@
             <h1>ADD SALES</h1>
             <div class="rectangle"></div><br>
             <input type="hidden" name="workerid" value="${wk.workerID}">
-            <input type="date" name="salesdate" placeholder="Sales Date"><br><br>
-            <input type="text" name="saleswalkin" placeholder="Walkin Sales"><br><br><br><br>
+            <table>
+                <tr>
+                    <td style="font-size: 25px; color: white">Sales Date</td>
+                    <td>: <input type="date" name="salesdate" placeholder="Sales Date"></td>
+                </tr>
+                <tr>
+                    <td style="font-size: 25px; color: white">Walkin Sales</td>
+                    <td>: <input type="text" name="saleswalkin" placeholder="Walkin Sales"></td>
+                </tr>
+            </table><br/><br/>
             <input type="hidden" name="branchid" value="${wk.branchID}">
             <input type="hidden" name="action" value="addsalesworker">
             <button type="submit" name="submit" onclick="form.action='../../SalesServlet'">ADD</button>

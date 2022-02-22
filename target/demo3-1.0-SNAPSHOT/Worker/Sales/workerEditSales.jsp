@@ -11,6 +11,12 @@
 <html>
 <head>
     <title>Sales</title>
+    <style>
+        td{
+            font-size: 23px;
+            color: white;
+        }
+    </style>
 </head>
 <body>
 <%@include file="../../menuHtml/menuWorkerSales.html"%>
@@ -27,13 +33,30 @@
             <div class="rectangle"></div><br>
             <input type="hidden" name="adminid" value="${sl.adminID}">
             <input type="hidden" name="workerid" value="${wk.workerID}">
-            <input type="text" name="salesid" placeholder="Sales ID" value="${sl.salesID}" readonly><br><br>
-            <input type="date" name="salesdate" placeholder="Sales Date" value="${sl.salesDate}"><br><br>
-            <input type="text" name="salesamount" placeholder="Sales Amount" value="${sl.salesAmount}" readonly><br><br>
-            <input type="text" name="saleswalkin" placeholder="Walkin Sales" value="${sl.salesWalkin}"><br><br>
-            <input type="text" name="salesbooking" placeholder="Booking Sales" value="${sl.salesBooking}" readonly><br><br>
+            <table>
+                <tr>
+                    <td>Sales ID</td>
+                    <td>: <input type="text" name="salesid" placeholder="Sales ID" value="${sl.salesID}" readonly></td>
+                </tr>
+                <tr>
+                    <td><span style="color: red">*</span>Sales Date</td>
+                    <td>: <input type="date" name="salesdate" placeholder="Sales Date" value="${sl.salesDate}"></td>
+                </tr>
+                <tr>
+                    <td>Total Sales</td>
+                    <td>: <input type="text" name="salesamount" placeholder="Sales Amount" value="${sl.salesAmount}" readonly></td>
+                </tr>
+                <tr>
+                    <td><span style="color: red">*</span>Walkin Sales</td>
+                    <td>: <input type="text" name="saleswalkin" placeholder="Walkin Sales" value="${sl.salesWalkin}"></td>
+                </tr>
+                <tr>
+                    <td>Booking Sales</td>
+                    <td>: <input type="text" name="salesbooking" placeholder="Booking Sales" value="${sl.salesBooking}" readonly></td>
+                </tr>
+            </table><br/><br/>
+
             <input type="hidden" name="branchid" value="${wk.branchID}">
-            </select><br><br>
             <input type="hidden" name="action" value="updatesalesworker">
             <button type="submit" name="submit" onclick="form.action='../../SalesServlet'">UPDATE</button>
         </center>

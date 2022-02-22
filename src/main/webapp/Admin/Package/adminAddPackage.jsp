@@ -10,6 +10,12 @@
 <head>
     <title>Package</title>
     <link rel="stylesheet" href="adminAddPackage.css">
+    <style>
+        td{
+            font-size: 23px;
+            color: white;
+        }
+    </style>
 </head>
 <body>
 <%@include file="../../menuHtml/menuAdminPackage.html"%>
@@ -22,12 +28,23 @@
             <img src="../../image/logo.png" style="width:150px; height:150px" >
             <h1>ADD NEW PACKAGE</h1>
             <div class="rectangle"></div><br>
-            <div>
-                <input type="text" name="packagename" placeholder="Package Name"><br><br>
-                <input type="text" name="packageid" placeholder="Package ID"><br><br>
-                <input type="text" name="packageprice" placeholder="Package Price"><br><br>
-                <input type="hidden" name="action" value="add">
-            </div>
+
+            <table>
+                <tr>
+                    <td>Package Name</td>
+                    <td>: <input type="text" name="packagename" placeholder="Package Name"></td>
+                </tr>
+                <tr>
+                    <td>Pakcage ID</td>
+                    <td>: <input type="text" name="packageid" placeholder="Package ID"></td>
+                </tr>
+                <tr>
+                    <td>Pakcage Price</td>
+                    <td>: <input type="text" name="packageprice" placeholder="Package Price"></td>
+                </tr>
+            </table><br><br>
+
+            <input type="hidden" name="action" value="add">
             <div>
                 <button type="submit" name="submit" onclick="form.action='../../PackageServlet'">ADD PACKAGE</button>
             </div>

@@ -92,6 +92,12 @@
             text-decoration: none;
             cursor: pointer;
         }
+        button:hover{
+            color: #7e08a5;
+        }
+        button a:hover{
+            color: #7e08a5;
+        }
     </style>
 </head>
 <body>

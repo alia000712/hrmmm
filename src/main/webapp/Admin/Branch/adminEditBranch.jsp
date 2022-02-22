@@ -13,6 +13,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <link rel="stylesheet" href="adminEditBranch.css">
     <title>Branch</title>
+    <style>
+        td{
+            font-size: 23px;
+            color: white;
+        }
+    </style>
 </head>
 <body>
 <%@include file="../../menuHtml/menuAdminBranch.html"%>
@@ -25,13 +31,30 @@
             <img src="../../image/logo.png" style="width:150px; height:150px" >
             <h1>UPDATE BRANCH</h1>
             <div class="rectangle"></div><br>
-            <div>
-                <input type="text" name="branchname" placeholder="Branch Name" value="${br.branchName}"><br><br>
-                <input type="text" name="branchid" placeholder="Branch ID" value="${br.branchID}"><br><br>
-                <input type="text" name="branchaddress" placeholder="Branch Address" value="${br.branchAddress}"><br><br>
-                <input type="text" name="branchphone" placeholder="Branch Phone" value="${br.branchPhone}"><br><br>
-                <input type="number" name="numofworker" placeholder="Number of Worker" value="${br.numOfWorker}"><br><br>
-            </div>
+
+            <table>
+                <tr>
+                    <td>Branch Name</td>
+                    <td>: <input type="text" name="branchname" placeholder="Branch Name" value="${br.branchName}"></td>
+                </tr>
+                <tr>
+                    <td>Branch ID</td>
+                    <td>: <input type="text" name="branchid" placeholder="Branch ID" value="${br.branchID}"></td>
+                </tr>
+                <tr>
+                    <td>Branch Address</td>
+                    <td>: <input type="text" name="branchaddress" placeholder="Branch Address" value="${br.branchAddress}"></td>
+                </tr>
+                <tr>
+                    <td>Branch Phone</td>
+                    <td>: <input type="text" name="branchphone" placeholder="Branch Phone" value="${br.branchPhone}"></td>
+                </tr>
+                <tr>
+                    <td>Worker</td>
+                    <td>: <input type="number" name="numofworker" placeholder="Number of Worker" value="${br.numOfWorker}"></td>
+                </tr>
+            </table><br><br>
+
             <div>
                 <input type="hidden" name="action" value="update">
                 <button type="submit" name="submit" onclick="form.action='../../BranchServlet'">UPDATE</button>

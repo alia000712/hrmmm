@@ -14,6 +14,12 @@
 <head>
     <title>Sales</title>
     <link rel="stylesheet" href="adminAddSales.css">
+    <style>
+        td{
+            color: white;
+            font-size: 23px;
+        }
+    </style>
 </head>
 <body>
 <%@include file="../../menuHtml/menuAdminSales.html"%>
@@ -26,47 +32,61 @@
             <img src="../../image/logo.png" style="width:150px; height:150px" >
             <h1>ADD SALES</h1>
             <div class="rectangle"></div><br>
+
             <input type="hidden" name="adminid" value="${adm.adminID}">
-            <input type="date" name="salesdate" placeholder="Sales Date"><br><br>
-            <input type="text" name="saleswalkin" placeholder="Walkin Sales"><br><br>
-            <select name="branchid">
-                <option value="" disabled selected>--Choose Branch--</option>
+            <table>
+                <tr>
+                    <td>Sales Date</td>
+                    <td>: <input type="date" name="salesdate" placeholder="Sales Date"></td>
+                </tr>
+                <tr>
+                    <td>Walkin Sales</td>
+                    <td>: <input type="text" name="saleswalkin" placeholder="Walkin Sales"></td>
+                </tr>
+                <tr>
+                    <td>Branch</td>
+                    <td>:
+                        <select name="branchid">
+                            <option value="" disabled selected>-- Choose Branch --</option>
 
-                <%
-                    try
-                    {
-                        Class.forName("org.postgresql.Driver"); // ni stay
-                        String dbURL = "jdbc:postgresql://ec2-50-19-32-96.compute-1.amazonaws.com:5432/d65mb698aandvt"; //ni url dri heroku database
-                        String user = "ffkacpfvbcmcwa"; //ni user dri heroku database
-                        String pass = "3939ef811721250f3db1595eb911cfcbac4e294a582158f13f9ef08dc63786bf"; //ni password dri heroku database
-                        Connection conn = DriverManager.getConnection(dbURL, user, pass);
+                            <%
+                                try
+                                {
+                                    Class.forName("org.postgresql.Driver"); // ni stay
+                                    String dbURL = "jdbc:postgresql://ec2-50-19-32-96.compute-1.amazonaws.com:5432/d65mb698aandvt"; //ni url dri heroku database
+                                    String user = "ffkacpfvbcmcwa"; //ni user dri heroku database
+                                    String pass = "3939ef811721250f3db1595eb911cfcbac4e294a582158f13f9ef08dc63786bf"; //ni password dri heroku database
+                                    Connection conn = DriverManager.getConnection(dbURL, user, pass);
 
-                        String sql  ="SELECT * from branch where branchid not in ('0');";
+                                    String sql  ="SELECT * from branch where branchid not in ('0');";
 
-                        if (conn != null)
-                        {
-                            DatabaseMetaData dm = conn.getMetaData();
-                            System.out.println("Driver name: " + dm.getDriverName());
-                            System.out.println("Driver version: " + dm.getDriverVersion());
-                            System.out.println("Product Name: " + dm.getDatabaseProductName());
-                            System.out.println("Product version: " + dm.getDatabaseProductVersion());
+                                    if (conn != null)
+                                    {
+                                        DatabaseMetaData dm = conn.getMetaData();
+                                        System.out.println("Driver name: " + dm.getDriverName());
+                                        System.out.println("Driver version: " + dm.getDriverVersion());
+                                        System.out.println("Product Name: " + dm.getDatabaseProductName());
+                                        System.out.println("Product version: " + dm.getDatabaseProductVersion());
 
 
-                            Statement statement = conn.createStatement();
-                            ResultSet res = statement.executeQuery(sql);
+                                        Statement statement = conn.createStatement();
+                                        ResultSet res = statement.executeQuery(sql);
 
-                            while (res.next())
-                            {
-                %>
+                                        while (res.next())
+                                        {
+                            %>
 
-                <option value="<%=res.getString("branchid")%>"><%=res.getString("branchName")%></option>
-                <%
-                            }
-                        }
-                    }
-                    catch (Exception e) {e.printStackTrace();}
-                %>
-            </select><br><br>
+                            <option value="<%=res.getString("branchid")%>"><%=res.getString("branchName")%></option>
+                            <%
+                                        }
+                                    }
+                                }
+                                catch (Exception e) {e.printStackTrace();}
+                            %>
+                        </select>
+                    </td>
+                </tr>
+            </table><br><br>
             <input type="hidden" name="action" value="addsalesadmin">
             <button type="submit" name="submit" onclick="form.action='../../SalesServlet'">ADD</button>
         </center>
