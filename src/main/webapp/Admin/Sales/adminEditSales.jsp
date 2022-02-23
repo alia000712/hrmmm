@@ -51,7 +51,7 @@
                     <td>: <input type="text" name="saleswalkin" placeholder="Walkin Sales" value="${sl.salesWalkin}"></td>
                 </tr>
                 <tr>
-                    <td><span style="color: red">*</span>Booking Sales</td>
+                    <td><span style="color: red"></span>Booking Sales</td>
                     <td>: <input type="text" name="salesbooking" placeholder="Booking Sales" value="${sl.salesBooking}" readonly></td>
                 </tr>
                 <tr>
