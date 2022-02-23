@@ -56,7 +56,7 @@
                             Booking Time
                         </td>
                         <td>
-                            : <input type="time" placeholder="Booking Time" name="bookingtime">
+                            : <input type="time" placeholder="Booking Time" name="bookingtime"> (Choose from 10.00 am until 8.30 pm only)
                         </td>
                     </tr>
                     <tr>
