@@ -120,7 +120,7 @@
                 <form action="" method="post">
                     <input type="hidden" name="action" value="deletecust">
                     <input type="hidden" name="bookingid" value="<%=res.getInt("bookingid")%>">
-                    <td><button type="submit" name="submit" onclick="form.action='../../BookingServlet'">DELETE</button></td>
+                    <td><button type="submit" name="submit" onclick="form.action='../../BookingServlet'">CANCEL</button></td>
                 </form>
             </tr>
                 <%
@@ -131,7 +131,7 @@
                 %>
         </table>
 
-    <br><br><br><br/><br><br><br/><br><br><br><br/><br><br><br/><br><br><br/><br/>
+    <br><br><br>
 
 
     <center>
@@ -153,10 +153,10 @@
         <%
             try
             {
-                Class.forName("org.postgresql.Driver"); // ni stay
-                String dbURL = "jdbc:postgresql://ec2-50-19-32-96.compute-1.amazonaws.com:5432/d65mb698aandvt"; //ni url dri heroku database
-                String user = "ffkacpfvbcmcwa"; //ni user dri heroku database
-                String pass = "3939ef811721250f3db1595eb911cfcbac4e294a582158f13f9ef08dc63786bf"; //ni password dri heroku database
+                Class.forName("org.postgresql.Driver");
+                String dbURL = "jdbc:postgresql://ec2-50-19-32-96.compute-1.amazonaws.com:5432/d65mb698aandvt";
+                String user = "ffkacpfvbcmcwa";
+                String pass = "3939ef811721250f3db1595eb911cfcbac4e294a582158f13f9ef08dc63786bf";
                 Connection conn = DriverManager.getConnection(dbURL, user, pass);
 
                 customer cust = (customer) session.getAttribute("cust");
@@ -197,7 +197,7 @@
             <form action="" method="post">
                 <input type="hidden" name="action" value="deletecust">
                 <input type="hidden" name="bookingid" value="<%=res.getInt("bookingid")%>">
-                <td><button type="submit" name="submit" onclick="form.action='../../BookingServlet'">DELETE</button></td>
+                <td><button type="submit" name="submit" onclick="form.action='../../BookingServlet'">CANCEL</button></td>
             </form>
             <form action="" method="post">
                 <input type="hidden" name="action" value="printcust">

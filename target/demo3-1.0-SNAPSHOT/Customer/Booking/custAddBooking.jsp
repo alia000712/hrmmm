@@ -48,7 +48,7 @@
                             Booking Date
                         </td>
                         <td>
-                            : <input class="date" type="date" placeholder="Booking Date" name="bookingdate">
+                            : <input class="date" type="date" placeholder="Booking Date" name="bookingdate"> (Choose at least two days early)
                         </td>
                     </tr>
                     <tr>

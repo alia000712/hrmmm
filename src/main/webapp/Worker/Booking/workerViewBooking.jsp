@@ -76,7 +76,7 @@
                 <th>PACKAGE ID</th>
                 <th>BOOKING DATE</th>
                 <th>BOOKING TIME</th>
-                <th colspan="2">ACTION</th>
+                <th>ACTION</th>
             </tr>
             <%
                 try
@@ -136,12 +136,6 @@
                     <input type="hidden" name="action" value="viewworker">
                     <td><button type="submit" name="submit" onclick="form.action='../../BookingServlet'">ACCEPT</button></td>
                 </form>
-
-                <form action="" method="post">
-                    <input type="hidden" name="action" value="deleteworker">
-                    <input type="hidden" name="bookingid" value="<%=res.getInt("bookingid")%>">
-                    <td><button type="submit" name="submit" onclick="form.action='../../BookingServlet'">DELETE</button></td>
-                </form>
             </tr>
             <%
                         }
@@ -151,7 +145,7 @@
             %>
         </table>
 
-        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/>
 
         <center>
             <h2>ACCEPTED BOOKING</h2>
@@ -166,7 +160,6 @@
                 <th>BOOKING DATE</th>
                 <th>BOOKING TIME</th>
                 <th>WORKER ID</th>
-                <th>ACTION</th>
             </tr>
             <%
                 try
@@ -212,13 +205,6 @@
                 <td><%=res.getDate("bookingdate")%></td>
                 <td><%=res.getString("bookingtime")%></td>
                 <td><%=res.getInt("workerid")%></td>
-
-
-                <form action="" method="post">
-                    <input type="hidden" name="action" value="deleteworker">
-                    <input type="hidden" name="bookingid" value="<%=res.getInt("bookingid")%>">
-                    <td><button type="submit" name="submit" onclick="form.action='../../BookingServlet'">DELETE</button></td>
-                </form>
             </tr>
             <%
                         }
