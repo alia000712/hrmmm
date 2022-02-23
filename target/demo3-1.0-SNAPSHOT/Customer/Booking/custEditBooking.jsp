@@ -49,7 +49,7 @@
                     Booking Date
                 </td>
                 <td>
-                    : <input class="date" type="date" placeholder="Booking Date" name="bookingdate" value="${bk.bookingDate}">
+                    : <input class="date" type="date" placeholder="Booking Date" name="bookingdate" value="${bk.bookingDate}"> (Choose at least two days early)
                 </td>
             </tr>
             <tr>
@@ -57,7 +57,7 @@
                     Booking Time
                 </td>
                 <td>
-                    : <input type="time" placeholder="Booking Time" name="bookingtime" value="${bk.bookingTime}">
+                    : <input type="time" placeholder="Booking Time" name="bookingtime" value="${bk.bookingTime}"> (Choose from 10.00 am until 8.30 pm only)
                 </td>
             </tr>
             <tr>
