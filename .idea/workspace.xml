@@ -9,7 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="161ce7f8-e6b1-40b1-a546-d94652648262" name="Changes" comment="depa suh update" />
+    <list default="true" id="161ce7f8-e6b1-40b1-a546-d94652648262" name="Changes" comment="depa suh update 2">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -147,7 +149,8 @@
       <updated>1645982162833</updated>
       <workItem from="1645982165033" duration="1253000" />
       <workItem from="1645984172781" duration="306000" />
-      <workItem from="1652114976214" duration="507000" />
+      <workItem from="1652114976214" duration="1782000" />
+      <workItem from="1652543174256" duration="4073000" />
     </task>
     <task id="LOCAL-00001" summary="depa suh update">
       <created>1652115447408</created>
@@ -156,7 +159,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652115447408</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="depa suh update 2">
+      <created>1652116253838</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1652116253838</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,6 +185,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="depa suh update" />
-    <option name="LAST_COMMIT_MESSAGE" value="depa suh update" />
+    <MESSAGE value="depa suh update 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="depa suh update 2" />
   </component>
 </project>
