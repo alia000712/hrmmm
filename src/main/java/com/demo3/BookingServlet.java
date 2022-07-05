@@ -6,6 +6,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
+import java.time.Clock;
 import java.time.LocalDate;
 
 @WebServlet(name = "BookingServlet", value = "/BookingServlet")
@@ -96,9 +97,10 @@ public class BookingServlet extends HttpServlet
                         "group by bookingdate,branchid having count(bookingdate)>=8;";
                 Statement statement = conn.createStatement();
                 ResultSet res = statement.executeQuery(sql);
+                Clock cl = Clock.systemUTC();
 
 
-                if(bookingdate2.compareTo(java.time.LocalDate.now())>=2)
+                if(bookingdate2.compareTo(java.time.LocalDate.now(cl))>=2)
                 {
                     while(res.next())
                     {
