@@ -180,7 +180,7 @@ public class BookingServlet extends HttpServlet
                                 branchid.equals(res.getString("branchid")))
                         {
                             out.println("<script>alert('Booking already full at chosen " +
-                                    "date and chosen branch.Please choose another date or another branch');</script>");
+                                    "date and branch.Please choose another date or another branch');</script>");
                             out.println("<script>window.location.href='Customer/Booking/custEditBooking.jsp'</script>");
                         }
                         else
