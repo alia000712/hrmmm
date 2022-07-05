@@ -9,11 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="161ce7f8-e6b1-40b1-a546-d94652648262" name="Changes" comment="depa suh update 3">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4fc2f718-c372-436d-822f-23703284f6af.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4fc2f718-c372-436d-822f-23703284f6af.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4fc2f718-c372-436d-822f-23703284f6af/storage_v2/_src_/database/d65mb698aandvt.MamKsA/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4fc2f718-c372-436d-822f-23703284f6af/storage_v2/_src_/database/d65mb698aandvt.MamKsA/schema/public.abK9xQ.meta" afterDir="false" />
+    <list default="true" id="161ce7f8-e6b1-40b1-a546-d94652648262" name="Changes" comment="update 1 6/7">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Customer/Booking/custViewBooking.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Customer/Booking/custViewBooking.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +158,7 @@
       <workItem from="1656432565535" duration="1577000" />
       <workItem from="1656514200167" duration="7563000" />
       <workItem from="1656569246166" duration="3229000" />
-      <workItem from="1657035793024" duration="1264000" />
+      <workItem from="1657035793024" duration="2360000" />
     </task>
     <task id="LOCAL-00001" summary="depa suh update">
       <created>1652115447408</created>
@@ -183,7 +181,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653463645343</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="update 1 6/7">
+      <created>1657037194909</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1657037194909</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,6 +209,7 @@
     <MESSAGE value="depa suh update" />
     <MESSAGE value="depa suh update 2" />
     <MESSAGE value="depa suh update 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="depa suh update 3" />
+    <MESSAGE value="update 1 6/7" />
+    <option name="LAST_COMMIT_MESSAGE" value="update 1 6/7" />
   </component>
 </project>
