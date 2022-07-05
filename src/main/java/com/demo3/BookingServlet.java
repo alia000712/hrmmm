@@ -98,9 +98,12 @@ public class BookingServlet extends HttpServlet
                 Statement statement = conn.createStatement();
                 ResultSet res = statement.executeQuery(sql);
 
+                System.out.println("bookingdate2: " + bookingdate2);
+                System.out.println("LocalDate Now: " + LocalDate.now());
+                System.out.println("LocalDate Now plus 3 days: " + LocalDate.now().plusDays(3));
 
 
-                if(bookingdate2.compareTo(java.time.LocalDate.now())>=2)
+                if(bookingdate2.compareTo(java.time.LocalDate.now().plusDays(3))>=0)
                 {
                     while(res.next())
                     {

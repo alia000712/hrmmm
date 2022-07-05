@@ -48,7 +48,7 @@
                             Booking Date
                         </td>
                         <td>
-                            : <input class="date" type="date" placeholder="Booking Date" name="bookingdate"> (Choose at least two days early)
+                            : <input class="date" type="date" placeholder="Booking Date" name="bookingdate" required> (Choose at least two days early)
                         </td>
                     </tr>
                     <tr>
@@ -56,7 +56,7 @@
                             Booking Time
                         </td>
                         <td>
-                            : <input type="time" placeholder="Booking Time" name="bookingtime"> (Choose from 10.00 am until 8.30 pm only)
+                            : <input type="time" placeholder="Booking Time" name="bookingtime" required> (Choose from 10.00 am until 8.30 pm only)
                         </td>
                     </tr>
                     <tr>
@@ -64,7 +64,7 @@
                             Choose Branch
                         </td>
                         <td>
-                            : <select name="branchid">
+                            : <select name="branchid" required>
                             <option value="" disabled selected>--Choose Branch--</option>
                             <%
                                 try
@@ -106,7 +106,7 @@
                     <tr>
                         <td>Choose Package </td>
                         <td>
-                            : <select name="packageid">
+                            : <select name="packageid" required>
                             <option value="" disabled selected>--Choose Package--</option>
                             <%
                                 try

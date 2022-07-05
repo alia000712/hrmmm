@@ -77,7 +77,8 @@
                                     "on (b.packageid = p.packageid)" +
                                     "join branch br " +
                                     "on (b.branchid=br.branchid)" +
-                                    "where b.custID='"+custID+"' and workerid is null";
+                                    "where b.custID='"+custID+"' and workerid is null " +
+                                    "order by b.bookingid";
 
                             if (conn != null)
                             {
