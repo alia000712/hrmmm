@@ -103,7 +103,7 @@ public class BookingServlet extends HttpServlet
                 System.out.println("LocalDate Now plus 3 days: " + LocalDate.now().plusDays(3));
 
 
-                if(bookingdate2.compareTo(java.time.LocalDate.now().plusDays(3))>=0)
+                if(bookingdate2.compareTo(java.time.LocalDate.now().plusDays(4))>=0)
                 {
                     while(res.next())
                     {
