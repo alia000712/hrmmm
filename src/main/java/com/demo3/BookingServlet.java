@@ -97,10 +97,10 @@ public class BookingServlet extends HttpServlet
                         "group by bookingdate,branchid having count(bookingdate)>=10;";
                 Statement statement = conn.createStatement();
                 ResultSet res = statement.executeQuery(sql);
-                Clock cl = Clock.systemUTC();
 
 
-                if(bookingdate2.compareTo(java.time.LocalDate.now(cl))>=3)
+
+                if(bookingdate2.compareTo(java.time.LocalDate.now())>=3)
                 {
                     while(res.next())
                     {

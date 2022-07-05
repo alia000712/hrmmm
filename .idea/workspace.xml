@@ -157,7 +157,7 @@
       <workItem from="1656432565535" duration="1577000" />
       <workItem from="1656514200167" duration="7563000" />
       <workItem from="1656569246166" duration="3229000" />
-      <workItem from="1657035793024" duration="4386000" />
+      <workItem from="1657035793024" duration="4687000" />
     </task>
     <task id="LOCAL-00001" summary="depa suh update">
       <created>1652115447408</created>
@@ -236,7 +236,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657040064100</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="plus clock zone 6/7">
+      <created>1657040227393</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1657040227393</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
