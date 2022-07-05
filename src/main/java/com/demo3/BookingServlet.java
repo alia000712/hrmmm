@@ -94,13 +94,13 @@ public class BookingServlet extends HttpServlet
 
 
                 String sql  ="select branchid,count(bookingdate),bookingdate from booking " +
-                        "group by bookingdate,branchid having count(bookingdate)>=8;";
+                        "group by bookingdate,branchid having count(bookingdate)>=10;";
                 Statement statement = conn.createStatement();
                 ResultSet res = statement.executeQuery(sql);
 
 
 
-                if(bookingdate2.compareTo(java.time.LocalDate.now())>=2)
+                if(bookingdate2.compareTo(java.time.LocalDate.now())>=3)
                 {
                     while(res.next())
                     {
