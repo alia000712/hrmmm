@@ -75,14 +75,25 @@ public class BookingServlet extends HttpServlet
         String packageid = request.getParameter("packageid");
         booking bk = new booking();
 
-        bk.setBranchID(branchid);
-        bk.setBookingDate(bookingdate);
-        bk.setBookingTime(bookingtime);
-        bk.setCustID(custid);
-        bk.setPackageID(packageid);
+        if(bookingdate2.compareTo(java.time.LocalDate.now().plusDays(4))>=0)
+        {
+            bk.setBranchID(branchid);
+            bk.setBookingDate(bookingdate);
+            bk.setBookingTime(bookingtime);
+            bk.setCustID(custid);
+            bk.setPackageID(packageid);
 
-        bkd.addBooking(bk);
-        response.sendRedirect("Customer/Booking/custViewBooking.jsp");
+            bkd.addBooking(bk);
+            response.sendRedirect("Customer/Booking/custViewBooking.jsp");
+        }
+        else
+        {
+            out.println("<script>alert('Please select at least two days early " +
+                    "from current date to make a booking.');</script>");
+            out.println("<script>window.location.href='Customer/Booking/custAddBooking.jsp'</script>");
+        }
+
+
     }
 
     /*################################( UPDATE BOOKING )#####################################*/
