@@ -128,7 +128,7 @@ public class BookingServlet extends HttpServlet
         {
             out.println("<script>alert('Please select at least two days early " +
                     "from current date to make a booking.');</script>");
-            out.println("<script>window.location.href='Customer/Booking/custAddBooking.jsp'</script>");
+            out.println("<script>window.location.href='Customer/Booking/custEditBooking.jsp'</script>");
         }
 
 
