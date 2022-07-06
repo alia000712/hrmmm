@@ -65,77 +65,24 @@ public class BookingServlet extends HttpServlet
     /*################################( ADD BOOKING )#####################################*/
 
     private void addBooking(HttpServletRequest request,
-    HttpServletResponse response) throws SQLException, IOException
-    {
+    HttpServletResponse response) throws SQLException, IOException {
         PrintWriter out = response.getWriter();
         String branchid = request.getParameter("branchid");
         LocalDate bookingdate2 = LocalDate.parse(request.getParameter("bookingdate"));
         Date bookingdate = Date.valueOf(request.getParameter("bookingdate"));
-        String bookingtime =request.getParameter("bookingtime");
+        String bookingtime = request.getParameter("bookingtime");
         int custid = Integer.parseInt(request.getParameter("custid"));
         String packageid = request.getParameter("packageid");
         booking bk = new booking();
 
-        try
-        {
-            Class.forName("org.postgresql.Driver");
-            String dbURL = "jdbc:postgresql://ec2-50-19-32-96.compute-1.amazonaws.com:5432/d65mb698aandvt";
-            String user = "ffkacpfvbcmcwa";
-            String pass = "3939ef811721250f3db1595eb911cfcbac4e294a582158f13f9ef08dc63786bf";
-            Connection conn = DriverManager.getConnection(dbURL, user, pass);
+        bk.setBranchID(branchid);
+        bk.setBookingDate(bookingdate);
+        bk.setBookingTime(bookingtime);
+        bk.setCustID(custid);
+        bk.setPackageID(packageid);
 
-            if (conn != null)
-            {
-                DatabaseMetaData dm = conn.getMetaData();
-                System.out.println("Driver name: " + dm.getDriverName());
-                System.out.println("Driver version: " + dm.getDriverVersion());
-                System.out.println("Product Name: " + dm.getDatabaseProductName());
-                System.out.println("Product version: " + dm.getDatabaseProductVersion());
-
-
-                String sql  ="select branchid,count(bookingdate),bookingdate from booking " +
-                        "group by bookingdate,branchid having count(bookingdate)>=8;";
-                Statement statement = conn.createStatement();
-                ResultSet res = statement.executeQuery(sql);
-
-                System.out.println("bookingdate2: " + bookingdate2);
-                System.out.println("LocalDate Now: " + LocalDate.now());
-                System.out.println("LocalDate Now plus 3 days: " + LocalDate.now().plusDays(3));
-
-
-                if(bookingdate2.compareTo(java.time.LocalDate.now().plusDays(4))>=0)
-                {
-                    while(res.next())
-                    {
-                        if(bookingdate.equals(res.getDate("bookingdate")) &&
-                                branchid.equals(res.getString("branchid")))
-                        {
-                            out.println("<script>alert('Booking already full at chosen date " +
-                                    "and chosen branch.Please choose another date or another branch');</script>");
-                            out.println("<script>window.location.href='Customer/Booking/custAddBooking.jsp'</script>");
-                        }
-                        else
-                        {
-                            bk.setBranchID(branchid);
-                            bk.setBookingDate(bookingdate);
-                            bk.setBookingTime(bookingtime);
-                            bk.setCustID(custid);
-                            bk.setPackageID(packageid);
-
-                            bkd.addBooking(bk);
-                            response.sendRedirect("Customer/Booking/custViewBooking.jsp");
-                        }
-                    }
-                }
-                else
-                {
-                    out.println("<script>alert('Please select at least two days early " +
-                            "from current date to make a booking.');</script>");
-                    out.println("<script>window.location.href='Customer/Booking/custAddBooking.jsp'</script>");
-                }
-            }
-        }
-        catch (Exception e) {e.printStackTrace();}
+        bkd.addBooking(bk);
+        response.sendRedirect("Customer/Booking/custViewBooking.jsp");
     }
 
     /*################################( UPDATE BOOKING )#####################################*/
