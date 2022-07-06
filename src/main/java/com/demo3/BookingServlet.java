@@ -147,30 +147,63 @@ public class BookingServlet extends HttpServlet
         int bookingid = Integer.parseInt(request.getParameter("bookingid"));
         booking bk = new booking();
 
-        if(bookingdate2.compareTo(java.time.LocalDate.now().plusDays(4))>=0)
+        try
         {
-            bk.setBranchID(branchid);
-            bk.setBookingDate(bookingdate);
-            bk.setBookingTime(bookingtime);
-            bk.setCustID(custid);
-            bk.setPackageID(packageid);
-            bk.setBookingID(bookingid);
+            Class.forName("org.postgresql.Driver");
+            String dbURL = "jdbc:postgresql://ec2-50-19-32-96.compute-1.amazonaws.com:5432/d65mb698aandvt";
+            String user = "ffkacpfvbcmcwa";
+            String pass = "3939ef811721250f3db1595eb911cfcbac4e294a582158f13f9ef08dc63786bf";
+            Connection conn = DriverManager.getConnection(dbURL, user, pass);
 
-            bkd.updateBookingCust(bk);
+            if (conn != null) {
+                DatabaseMetaData dm = conn.getMetaData();
+                System.out.println("Driver name: " + dm.getDriverName());
+                System.out.println("Driver version: " + dm.getDriverVersion());
+                System.out.println("Product Name: " + dm.getDatabaseProductName());
+                System.out.println("Product version: " + dm.getDatabaseProductVersion());
 
-            session.removeAttribute("bk");
-            session.setAttribute("bk",bk);
-            response.sendRedirect("Customer/Booking/custViewBooking.jsp");
+
+                String sql = "select branchid,count(bookingdate),bookingdate from booking " +
+                        "group by bookingdate,branchid having count(bookingdate)>=8;";
+
+                Statement statement = conn.createStatement();
+                ResultSet res = statement.executeQuery(sql);
+
+                if (bookingdate2.compareTo(java.time.LocalDate.now().plusDays(4)) >= 0)
+                {
+                    while(res.next())
+                    {
+                        if(bookingdate.equals(res.getDate("bookingdate")) &&
+                                branchid.equals(res.getString("branchid")))
+                        {
+                            out.println("<script>alert('Booking already full at chosen " +
+                                    "date and branch.Please choose another date or another branch');</script>");
+                            out.println("<script>window.location.href='Customer/Booking/custEditBooking.jsp'</script>");
+                        }
+                        else
+                        {
+                            bk.setBranchID(branchid);
+                            bk.setBookingDate(bookingdate);
+                            bk.setBookingTime(bookingtime);
+                            bk.setCustID(custid);
+                            bk.setPackageID(packageid);
+                            bk.setBookingID(bookingid);
+
+                            bkd.updateBookingCust(bk);
+
+                            session.removeAttribute("bk");
+                            session.setAttribute("bk",bk);
+                            response.sendRedirect("Customer/Booking/custViewBooking.jsp");
+                        }
+                    }
+                } else {
+                    out.println("<script>alert('Please select at least two days early " +
+                            "from current date to make a booking.');</script>");
+                    out.println("<script>window.location.href='Customer/Booking/custEditBooking.jsp'</script>");
+                }
+            }
         }
-        else
-        {
-            out.println("<script>alert('Please select at least two days early " +
-                    "from current date to make a booking.');</script>");
-            out.println("<script>window.location.href='Customer/Booking/custEditBooking.jsp'</script>");
-        }
-
-
-
+        catch (Exception e) {e.printStackTrace();}
     }
 
     private void updateBookingWorker(HttpServletRequest request,
